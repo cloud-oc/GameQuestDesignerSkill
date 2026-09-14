@@ -1,0 +1,4 @@
+interface:
+  display_name: "GameQuestDesignerSkill"
+  short_description: "学习不同 RPG 项目的任务系统，适配剧本拆解、任务创作与制作需求工作流"
+  default_prompt: "使用 $game-quest-designer，根据我提供的项目资料建立专属任务策划工作流，再完成本次任务设计。"
