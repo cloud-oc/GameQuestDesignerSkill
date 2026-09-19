@@ -1,8 +1,7 @@
-<p align="left">
-  <img src="assets/quest-icon-v2.svg" alt="任务设计徽记：Q 形轮廓内的对称树状分支，采用直角连线与圆形节点" width="160" height="160">
-</p>
-
-# GameQuestDesignerSkill
+<h1>
+  <img src="assets/quest-icon-v2.svg" alt="任务设计徽记：Q 形轮廓内的对称树状分支，采用直角连线与圆形节点" width="48" height="48" align="absmiddle">
+  GameQuestDesignerSkill
+</h1>
 
 [![中文](https://img.shields.io/badge/语言-中文-D74632?style=flat-square)](README.md) [![English](https://img.shields.io/badge/Language-English-20231F?style=flat-square)](README.en.md) [![日本語](https://img.shields.io/badge/言語-日本語-20231F?style=flat-square)](README.ja.md)
 

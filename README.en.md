@@ -1,8 +1,7 @@
-<p align="left">
-  <img src="assets/quest-icon-v2.svg" alt="Quest design mark: a Q surrounding a symmetrical tree with right-angle connections and circular nodes" width="160" height="160">
-</p>
-
-# GameQuestDesignerSkill
+<h1>
+  <img src="assets/quest-icon-v2.svg" alt="Quest design mark: a Q surrounding a symmetrical tree with right-angle connections and circular nodes" width="48" height="48" align="absmiddle">
+  GameQuestDesignerSkill
+</h1>
 
 [![中文](https://img.shields.io/badge/语言-中文-20231F?style=flat-square)](README.md) [![English](https://img.shields.io/badge/Language-English-D74632?style=flat-square)](README.en.md) [![日本語](https://img.shields.io/badge/言語-日本語-20231F?style=flat-square)](README.ja.md)
 

@@ -1,8 +1,7 @@
-<p align="left">
-  <img src="assets/quest-icon-v2.svg" alt="クエスト設計のアイコン：Q の内側に直角の接続線と円形ノードで構成した対称のツリー" width="160" height="160">
-</p>
-
-# GameQuestDesignerSkill
+<h1>
+  <img src="assets/quest-icon-v2.svg" alt="クエスト設計のアイコン：Q の内側に直角の接続線と円形ノードで構成した対称のツリー" width="48" height="48" align="absmiddle">
+  GameQuestDesignerSkill
+</h1>
 
 [![中文](https://img.shields.io/badge/语言-中文-20231F?style=flat-square)](README.md) [![English](https://img.shields.io/badge/Language-English-20231F?style=flat-square)](README.en.md) [![日本語](https://img.shields.io/badge/言語-日本語-D74632?style=flat-square)](README.ja.md)
 
