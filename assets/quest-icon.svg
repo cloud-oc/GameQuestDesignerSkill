@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Game Quest Designer</title>
+  <desc id="desc">构成主义任务图标：米白底色上的黑色任务文档，红色斜向箭头指向圆形目标。</desc>
+  <rect width="512" height="512" fill="#F3EBDD"/>
+  <path d="M144 96H286L344 154V416H144Z" fill="#191919"/>
+  <path d="M286 96V154H344Z" fill="#F3EBDD"/>
+  <path d="M178 174H254V194H178ZM178 214H228V234H178Z" fill="#F3EBDD"/>
+  <path d="M85 364L278 171L250 143H358V251L330 223L137 416Z" fill="#D93829"/>
+  <circle cx="392" cy="109" r="27" fill="#D93829"/>
+</svg>

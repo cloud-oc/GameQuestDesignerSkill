@@ -1,0 +1,5 @@
+interface:
+  display_name: "任务制作需求"
+  short_description: "面向游戏任务的任务制作需求，依据项目资料交付可追溯的设计结果"
+  default_prompt: "使用 $quest-requirements，提取这份任务的制作与演出需求，区分已确认资源、复用候选和待确认项。"
+

@@ -1,0 +1,5 @@
+interface:
+  display_name: "任务质量评审"
+  short_description: "面向游戏任务的任务质量评审，依据项目资料交付可追溯的设计结果"
+  default_prompt: "使用 $quest-review，评审这份任务，优先指出会影响玩家理解、完成路径和制作落地的问题。"
+

@@ -1,0 +1,5 @@
+interface:
+  display_name: "任务实现规格"
+  short_description: "面向游戏任务的任务实现规格，依据项目资料交付可追溯的设计结果"
+  default_prompt: "使用 $quest-spec，将这份任务流程转为实现规格，明确状态、判定、异常恢复和配置缺口。"
+

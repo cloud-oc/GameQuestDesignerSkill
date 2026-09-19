@@ -1,0 +1,5 @@
+interface:
+  display_name: "任务跨团队交付"
+  short_description: "面向游戏任务的任务跨团队交付，依据项目资料交付可追溯的设计结果"
+  default_prompt: "使用 $quest-collab，把这次任务变更整理成跨团队交接材料，说明玩家体验、状态规则和验收条件。"
+

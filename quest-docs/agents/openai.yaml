@@ -1,0 +1,5 @@
+interface:
+  display_name: "任务文档操作"
+  short_description: "面向游戏任务的任务文档操作，依据项目资料交付可追溯的设计结果"
+  default_prompt: "使用 $quest-docs，整理这些任务资料并更新指定文档，保留来源、稳定 ID 与变更记录。"
+

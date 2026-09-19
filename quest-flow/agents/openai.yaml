@@ -1,0 +1,5 @@
+interface:
+  display_name: "任务流程设计"
+  short_description: "面向游戏任务的任务流程设计，依据项目资料交付可追溯的设计结果"
+  default_prompt: "使用 $quest-flow，把这段剧本转为玩家体验与任务逻辑对应的流程，保留剧情意图。"
+

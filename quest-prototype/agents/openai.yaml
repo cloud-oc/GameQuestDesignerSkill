@@ -1,0 +1,5 @@
+interface:
+  display_name: "任务逻辑验证"
+  short_description: "面向游戏任务的任务逻辑验证，依据项目资料交付可追溯的设计结果"
+  default_prompt: "使用 $quest-prototype，为这份任务建立逻辑原型，验证正常路径与最可能阻塞的异常路径。"
+

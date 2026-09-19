@@ -1,0 +1,5 @@
+interface:
+  display_name: "任务概念与定义"
+  short_description: "面向游戏任务的任务概念与定义，依据项目资料交付可追溯的设计结果"
+  default_prompt: "使用 $quest-design，根据这个区域、角色与可用玩法设计一个任务，并给出可控制的制作范围。"
+

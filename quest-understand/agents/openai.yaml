@@ -1,0 +1,5 @@
+interface:
+  display_name: "任务系统理解"
+  short_description: "面向游戏任务的任务系统理解，依据项目资料交付可追溯的设计结果"
+  default_prompt: "使用 $quest-understand，读取这些项目资料，梳理任务系统的能力、状态与配置约束。"
+
