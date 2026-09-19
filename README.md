@@ -10,6 +10,34 @@ Skill 能识别“章节—幕—任务组—任务—目标”、Quest/Target �
 
 ## 下载与安装
 
+### 使用 npx 安装与更新
+
+需要 Node.js 20 或更高版本及 npm。此入口随仓库提供，无需预先全局安装。
+
+当包含 `package.json` 和 `bin/` 的版本已推送至 GitHub main 后，可以直接从仓库运行：
+
+~~~bash
+# 完整安装（已有 Skill 跳过）
+npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills install
+
+# 更新已安装的本套 Skill（不会补装未安装的能力）
+npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills update
+
+# 仅安装或更新指定能力
+npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills install quest-design quest-review
+npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills update quest-design quest-review
+~~~
+
+仓库尚未发布 npm 包，因此不要使用 `npx game-quest-designer-skills@latest`。GitHub 方式读取指定分支的版本；需要固定版本时，可把 `#main` 换成已发布的标签或完整 commit SHA。
+
+已下载仓库时，可直接执行 `node bin/quest-skills.mjs install` 或 `node bin/quest-skills.mjs update`，不依赖 npm 发布。
+
+- `list`：列出本套 Skill 的安装状态。
+- `--dry-run`：预览操作，不写入文件。
+- `--dest PATH`：自定义安装目录；默认使用 `$CODEX_HOME/skills`，未设置时使用 `~/.codex/skills`。
+
+更新按目录替换，不合并个人修改。内容变化时，旧目录会完整保存到安装目录同级的 `.quest-skill-backups/<唯一编号>/<Skill 名称>/`，终端输出准确路径；内容一致则跳过。需要恢复时，将当前对应 Skill 移开，再把备份目录复制回原位置。更新以单个 Skill 为单位；若中途失败，已完成的其他 Skill 不会回退，可修复问题后重试。
+
 ### 下载仓库
 
 无需 Git：打开 [GitHub 仓库](https://github.com/cloud-oc/GameQuestDesignerSkill)，选择 **Code → Download ZIP**，解压后进入仓库目录。也可以直接[下载 main 分支 ZIP](https://github.com/cloud-oc/GameQuestDesignerSkill/archive/refs/heads/main.zip)。
@@ -21,7 +49,7 @@ git clone https://github.com/cloud-oc/GameQuestDesignerSkill.git
 cd GameQuestDesignerSkill
 ```
 
-### 完整安装（推荐）
+### 手动完整安装
 
 在解压或克隆后的仓库根目录执行以下命令（macOS / Linux，Bash / Zsh）。它会安装总入口和九个专项能力；已有同名目录会跳过，并显示提示。
 
@@ -56,7 +84,7 @@ quest-design 和 quest-review 两个目录中的 Skill。
 
 安装完成后，在下一轮对话中输入 `$quest-design` 或 `$quest-review` 调用对应能力。若未显示，检查目录是否为 `skills/quest-design/SKILL.md`，而不是多套了一层仓库目录。
 
-更新时重新下载 ZIP；Git 用户可在仓库目录执行 `git pull --ff-only`。下载更新不会自动更新已安装的副本：备份自己修改过的同名 Skill 目录后，再用新版目录替换。上面的安装命令会跳过已有目录，不执行覆盖更新。
+更新可使用上面的 npx 命令。手动管理时重新下载 ZIP，或在仓库目录执行 `git pull --ff-only`，再执行 `node bin/quest-skills.mjs update` 更新已安装副本。手动复制用户应先备份再替换；上面的 Shell 复制命令会跳过已有目录。
 
 ## 使用方式
 
@@ -97,6 +125,8 @@ Skill 会按需要读取参考文件。你提供的项目模板优先；没有�
 开发文档中设想的云文档适配器、同步脚本和解析器不被伪装成已实现能力；当前 Skill 会优先使用运行环境中真实可用的文档工具，并对覆盖、批量同步等操作保留明确授权边界。
 
 ## 维护与验证
+
+安装器使用 Node.js 标准库，无第三方运行依赖。运行 `npm test` 验证安装、更新、备份、重复执行、预览和目标保护；运行 `npm pack --dry-run` 检查分发文件。npx 负责取得指定版本的安装器，安装器本身只操作随包分发的 Skill，不执行 Git 拉取。
 
 业务方法覆盖 RPG 制作中的具体问题：玩家动机与信息揭示、选择后果与分支成本、共享 NPC 和世界状态、目标计数与奖励结算、存档/重入恢复，以及配置验收与试玩观察。相关细节按需加载到任务设计、流程、规格和验证能力中。
 
