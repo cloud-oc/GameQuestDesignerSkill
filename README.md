@@ -1,8 +1,10 @@
-# GameQuestDesignerSkill
-
-<p align="center">
+<p align="left">
   <img src="assets/quest-icon-v2.svg" alt="任务设计徽记：Q 形轮廓内的对称树状分支，采用直角连线与圆形节点" width="160" height="160">
 </p>
+
+# GameQuestDesignerSkill
+
+[![中文](https://img.shields.io/badge/语言-中文-D74632?style=flat-square)](README.md) [![English](https://img.shields.io/badge/Language-English-20231F?style=flat-square)](README.en.md) [![日本語](https://img.shields.io/badge/言語-日本語-20231F?style=flat-square)](README.ja.md)
 
 面向 RPG 任务设计全流程的自适应 Skill。它从用户提供的任务系统、编辑器说明、剧本和世界观中学习项目规则，形成专属工作流，再完成任务理解、任务定义、流程架构、实现规格、逻辑原型、质量审查、原创任务、制作需求与跨团队交付。
 
