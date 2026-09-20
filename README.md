@@ -9,84 +9,35 @@
 
 Skill 能识别“章节—幕—任务组—任务—目标”、Quest/Target 和声明式任务分工，但只在项目资料确认采用这些规则时启用；不会把某个团队的内部流程当成所有 RPG 的通用事实。没有项目资料时也能做概念草案，但会明确未确认的系统能力。项目私有资料保存在用户项目内，不放进通用 Skill。
 
-## 下载与安装
+## 安装
 
-### 使用 npm 安装与更新
+### 使用 npx
 
-需要 Node.js 20 或更高版本及 npm。先安装已发布的 [npm 包](https://www.npmjs.com/package/game-quest-designer-skills)：
-
-~~~bash
-npm install --global game-quest-designer-skills@latest
-
-# 完整安装（已有 Skill 跳过）
-quest-skills install
-
-# 更新已安装的本套 Skill（不会补装未安装的能力）
-quest-skills update
-
-# 仅安装或更新指定能力
-quest-skills install quest-design quest-review
-quest-skills update quest-design quest-review
-~~~
-
-升级 CLI 时再次运行 `npm install --global game-quest-designer-skills@latest`。需要固定版本时，将 `@latest` 换成具体版本，例如 `@0.1.0`。如需试用 GitHub `main` 分支的尚未发布内容，可使用 `npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills install`。
-
-已下载仓库时，可直接执行 `node bin/quest-skills.mjs install` 或 `node bin/quest-skills.mjs update`，不依赖 npm 发布。
-
-- `list`：列出本套 Skill 的安装状态。
-- `--dry-run`：预览操作，不写入文件。
-- `--dest PATH`：自定义安装目录；默认使用 `$CODEX_HOME/skills`，未设置时使用 `~/.codex/skills`。
-
-更新按目录替换，不合并个人修改。内容变化时，旧目录会完整保存到安装目录同级的 `.quest-skill-backups/<唯一编号>/<Skill 名称>/`，终端输出准确路径；内容一致则跳过。需要恢复时，将当前对应 Skill 移开，再把备份目录复制回原位置。更新以单个 Skill 为单位；若中途失败，已完成的其他 Skill 不会回退，可修复问题后重试。
-
-### 下载仓库
-
-无需 Git：打开 [GitHub 仓库](https://github.com/cloud-oc/GameQuestDesignerSkill)，选择 **Code → Download ZIP**，解压后进入仓库目录。也可以直接[下载 main 分支 ZIP](https://github.com/cloud-oc/GameQuestDesignerSkill/archive/refs/heads/main.zip)。
-
-使用 Git：
+需要 Node.js 20 或更高版本及 npm，无需全局安装：
 
 ```bash
-git clone https://github.com/cloud-oc/GameQuestDesignerSkill.git
-cd GameQuestDesignerSkill
+# 安装全部 Skill；已有目录会跳过
+npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install
+
+# 更新已安装的本套 Skill
+npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills update
 ```
 
-### 手动完整安装
-
-在解压或克隆后的仓库根目录执行以下命令（macOS / Linux，Bash / Zsh）。它会安装总入口和九个专项能力；已有同名目录会跳过，并显示提示。
+安装指定 Skill 时，在命令末尾添加名称，例如：
 
 ```bash
-quest_skill_dir="${CODEX_HOME:-$HOME/.codex}/skills"
-mkdir -p "$quest_skill_dir"
-for quest_skill in game-quest-designer quest-understand quest-design quest-flow quest-spec quest-prototype quest-review quest-requirements quest-collab quest-docs; do
-  if [ -e "$quest_skill_dir/$quest_skill" ]; then
-    printf '已存在，跳过：%s\n' "$quest_skill"
-  else
-    cp -R "$quest_skill" "$quest_skill_dir/$quest_skill"
-  fi
-done
+npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install quest-design quest-review
 ```
 
-Windows 或不使用终端时，可手动把上述十个目录复制到用户目录下的 `.codex/skills/`；若设置了 `CODEX_HOME`，则使用该目录下的 `skills/`。
+更新会替换对应 Skill 目录，不合并个人修改；旧目录会备份到安装目录同级的 `.quest-skill-backups/`。可添加 `--dry-run` 预览操作，或使用 `--dest PATH` 指定安装目录。
 
-### 按需安装
+### 让 Agent 安装
 
-只需要某项能力时，复制对应目录即可，例如只复制 `quest-design/` 和 `quest-review/`。每个目录中的 `SKILL.md` 与 `agents/` 都应保留，不要只下载一个 Markdown 文件。
-
-也可以在支持 `$skill-installer` 的 Codex 环境中发送：
+把下面这句话直接发给 Codex 或其他支持安装 Skill 的 Agent：
 
 ```text
-使用 $skill-installer，从 cloud-oc/GameQuestDesignerSkill 的 main 分支安装
-quest-design 和 quest-review 两个目录中的 Skill。
+请安装这个仓库中的全部 Skill：https://github.com/cloud-oc/GameQuestDesignerSkill
 ```
-
-完整安装时，将目录列表换成上面完整安装命令中的十个名称。
-
-### 确认安装与更新
-
-安装完成后，在下一轮对话中输入 `$quest-design` 或 `$quest-review` 调用对应能力。若未显示，检查目录是否为 `skills/quest-design/SKILL.md`，而不是多套了一层仓库目录。
-
-更新可使用上面的 npx 命令。手动管理时重新下载 ZIP，或在仓库目录执行 `git pull --ff-only`，再执行 `node bin/quest-skills.mjs update` 更新已安装副本。手动复制用户应先备份再替换；上面的 Shell 复制命令会跳过已有目录。
-
 ## 使用方式
 
 将 `game-quest-designer/` 和下表中需要的 `quest-*/` 目录并列安装到你的 Skill 目录（Codex 通常为 `~/.codex/skills/`）。每个目录都有自己的 `SKILL.md` 和 UI 元数据；仅放在本仓库中不代表已安装。不要把专项目录嵌套在总入口目录内。总入口使用 `$game-quest-designer`，各专项能力可以单独安装、独立调用。

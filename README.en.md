@@ -9,84 +9,35 @@ An adaptive skill collection for the full RPG quest design workflow. It learns p
 
 The skills recognize structures such as chapter–act–quest group–quest–objective, Quest/Target models, and declarative quest systems, but apply them only when your project materials confirm their use. One team's internal workflow is not treated as a universal RPG standard. Concept drafts are possible without project documentation, with unconfirmed capabilities clearly identified. Private project materials stay in your project, outside the reusable skill package.
 
-## Download and installation
+## Installation
 
-### Install and update with npm
+### Use npx
 
-Requires Node.js 20 or later and npm. Install the published [npm package](https://www.npmjs.com/package/game-quest-designer-skills) first:
-
-~~~bash
-npm install --global game-quest-designer-skills@latest
-
-# Install all skills (skip existing skills)
-quest-skills install
-
-# Update installed skills in this collection (do not install missing skills)
-quest-skills update
-
-# Install or update selected skills only
-quest-skills install quest-design quest-review
-quest-skills update quest-design quest-review
-~~~
-
-Run `npm install --global game-quest-designer-skills@latest` again to upgrade the CLI. To pin a release, replace `@latest` with an exact version such as `@0.1.0`. To try unpublished changes from the GitHub `main` branch, use `npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills install`.
-
-If you have already downloaded the repository, run `node bin/quest-skills.mjs install` or `node bin/quest-skills.mjs update` directly; no npm publication is required.
-
-- `list`: Show installation status for this collection.
-- `--dry-run`: Preview actions without writing files.
-- `--dest PATH`: Set the installation directory. Defaults to `$CODEX_HOME/skills`, or `~/.codex/skills` when unset.
-
-Updates replace directories rather than merge personal changes. When content changes, the complete old directory is backed up to `.quest-skill-backups/<unique-id>/<skill-name>/` alongside the installation directory; the terminal prints the exact path. Identical content is skipped. To restore a backup, move the current skill directory aside and copy the backup back to its original location. Updates are performed per skill: if an operation fails partway through, previously completed updates are not rolled back. Resolve the issue and retry.
-
-### Download the repository
-
-Without Git: open the [GitHub repository](https://github.com/cloud-oc/GameQuestDesignerSkill), select **Code → Download ZIP**, extract it, and open the repository directory. You can also [download the main branch ZIP directly](https://github.com/cloud-oc/GameQuestDesignerSkill/archive/refs/heads/main.zip).
-
-With Git:
+Requires Node.js 20 or later and npm. No global installation is needed:
 
 ```bash
-git clone https://github.com/cloud-oc/GameQuestDesignerSkill.git
-cd GameQuestDesignerSkill
+# Install all skills; existing directories are skipped
+npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install
+
+# Update installed skills from this collection
+npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills update
 ```
 
-### Manual full installation
-
-Run the following from the extracted or cloned repository root (macOS / Linux, Bash / Zsh). It installs the main entry point and nine specialized skills, skipping existing directories with a message.
+To install selected skills, append their names:
 
 ```bash
-quest_skill_dir="${CODEX_HOME:-$HOME/.codex}/skills"
-mkdir -p "$quest_skill_dir"
-for quest_skill in game-quest-designer quest-understand quest-design quest-flow quest-spec quest-prototype quest-review quest-requirements quest-collab quest-docs; do
-  if [ -e "$quest_skill_dir/$quest_skill" ]; then
-    printf 'Already exists, skipping: %s\n' "$quest_skill"
-  else
-    cp -R "$quest_skill" "$quest_skill_dir/$quest_skill"
-  fi
-done
+npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install quest-design quest-review
 ```
 
-On Windows, or if you prefer not to use a terminal, copy these ten directories into `.codex/skills/` under your user directory. If `CODEX_HOME` is set, use its `skills/` subdirectory instead.
+Updates replace the corresponding skill directories rather than merge personal changes. Previous directories are backed up under `.quest-skill-backups/` beside the installation directory. Add `--dry-run` to preview an operation or `--dest PATH` to choose the installation directory.
 
-### Install selected skills
+### Ask an agent to install
 
-Copy only the directories you need, such as `quest-design/` and `quest-review/`. Keep each directory's `SKILL.md` and `agents/` contents; do not download just a single Markdown file.
-
-In a Codex environment that supports `$skill-installer`, you can also send:
+Send this directly to Codex or another agent that supports skill installation:
 
 ```text
-Use $skill-installer to install the skills in the quest-design and quest-review
-directories from the main branch of cloud-oc/GameQuestDesignerSkill.
+Install all skills from this repository: https://github.com/cloud-oc/GameQuestDesignerSkill
 ```
-
-For a full installation, replace that directory list with the ten names in the full installation command above.
-
-### Verify installation and update
-
-After installation, invoke `$quest-design` or `$quest-review` in your next turn. If a skill does not appear, check that the path is `skills/quest-design/SKILL.md`, without an extra repository directory in between.
-
-Use the npx command above to update. If managing a local checkout, download the ZIP again or run `git pull --ff-only`, then run `node bin/quest-skills.mjs update` to update installed copies. When copying manually, back up before replacing directories; the shell copy command above skips existing directories.
-
 ## Usage
 
 Install `game-quest-designer/` and the `quest-*/` directories you need side by side in your skill directory (typically `~/.codex/skills/` for Codex). Each has its own `SKILL.md` and UI metadata. Keeping them in this repository alone does not install them. Do not nest specialized skills inside the main skill directory. Use `$game-quest-designer` for the main entry point; specialized skills can be installed and invoked independently.

@@ -9,84 +9,35 @@ RPG のクエスト設計全体を支援する、プロジェクトに適応可�
 
 「章―幕―クエストグループ―クエスト―目標」、Quest/Target モデル、宣言的なクエスト設計などを理解できますが、プロジェクト資料で採用が確認できた場合にのみ適用します。特定チームの内部工程を、すべての RPG に共通する標準とは扱いません。資料がなくてもコンセプト案を作成できますが、未確認のシステム機能を明示します。非公開のプロジェクト資料はプロジェクト内に保存し、汎用 Skill パッケージには含めません。
 
-## ダウンロードとインストール
+## インストール
 
-### npm によるインストールと更新
+### npx を使用する
 
-Node.js 20 以降と npm が必要です。まず、公開済みの [npm パッケージ](https://www.npmjs.com/package/game-quest-designer-skills)をインストールします。
-
-~~~bash
-npm install --global game-quest-designer-skills@latest
-
-# 全 Skill をインストール（既存の Skill はスキップ）
-quest-skills install
-
-# インストール済みの本コレクションの Skill を更新（未導入の Skill は追加しない）
-quest-skills update
-
-# 指定した Skill のみインストールまたは更新
-quest-skills install quest-design quest-review
-quest-skills update quest-design quest-review
-~~~
-
-CLI を更新するには、`npm install --global game-quest-designer-skills@latest` を再度実行します。バージョンを固定する場合は、`@latest` を `@0.1.0` のような特定のバージョンに置き換えてください。GitHub `main` ブランチの未公開の変更を試す場合は、`npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills install` を使用できます。
-
-リポジトリをダウンロード済みの場合は、`node bin/quest-skills.mjs install` または `node bin/quest-skills.mjs update` を直接実行できます。npm への公開は不要です。
-
-- `list`：本コレクションのインストール状況を表示します。
-- `--dry-run`：ファイルを書き込まず、予定される操作を表示します。
-- `--dest PATH`：インストール先を指定します。既定値は `$CODEX_HOME/skills`、未設定の場合は `~/.codex/skills` です。
-
-更新はディレクトリ単位の置き換えであり、個人の変更はマージしません。内容に変更がある場合、旧ディレクトリ全体をインストール先と同じ親ディレクトリの `.quest-skill-backups/<一意のID>/<Skill名>/` に保存し、正確なパスをターミナルに表示します。内容が同じ場合はスキップします。復元するには、現在の該当 Skill を別の場所へ移し、バックアップを元の位置にコピーしてください。更新は Skill ごとに行われるため、途中で失敗しても、完了済みの別の Skill は元に戻りません。原因を解消してから再実行できます。
-
-### リポジトリのダウンロード
-
-Git を使わない場合：[GitHub リポジトリ](https://github.com/cloud-oc/GameQuestDesignerSkill)で **Code → Download ZIP** を選択し、展開してリポジトリのディレクトリを開きます。[main ブランチの ZIP を直接ダウンロード](https://github.com/cloud-oc/GameQuestDesignerSkill/archive/refs/heads/main.zip)することもできます。
-
-Git を使う場合：
+Node.js 20 以降と npm が必要です。グローバルインストールは不要です。
 
 ```bash
-git clone https://github.com/cloud-oc/GameQuestDesignerSkill.git
-cd GameQuestDesignerSkill
+# すべての Skill をインストール（既存のディレクトリはスキップ）
+npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install
+
+# インストール済みの本コレクションの Skill を更新
+npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills update
 ```
 
-### 手動で全 Skill をインストール
-
-展開またはクローンしたリポジトリのルートで、次のコマンドを実行してください（macOS / Linux、Bash / Zsh）。総合入口と 9 つの専門 Skill をインストールします。同名のディレクトリがある場合は、メッセージを表示してスキップします。
+指定した Skill だけをインストールする場合は、末尾に名前を追加します。
 
 ```bash
-quest_skill_dir="${CODEX_HOME:-$HOME/.codex}/skills"
-mkdir -p "$quest_skill_dir"
-for quest_skill in game-quest-designer quest-understand quest-design quest-flow quest-spec quest-prototype quest-review quest-requirements quest-collab quest-docs; do
-  if [ -e "$quest_skill_dir/$quest_skill" ]; then
-    printf '既存のためスキップ：%s\n' "$quest_skill"
-  else
-    cp -R "$quest_skill" "$quest_skill_dir/$quest_skill"
-  fi
-done
+npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install quest-design quest-review
 ```
 
-Windows を使う場合やターミナルを使わない場合は、上記 10 個のディレクトリをユーザーディレクトリ内の `.codex/skills/` に手動でコピーしてください。`CODEX_HOME` を設定している場合は、その配下の `skills/` を使用します。
+更新では個人の変更をマージせず、対応する Skill ディレクトリを置き換えます。以前のディレクトリは、インストール先と同じ親ディレクトリの `.quest-skill-backups/` に保存されます。`--dry-run` で操作を確認し、`--dest PATH` でインストール先を指定できます。
 
-### 必要な Skill だけをインストール
+### Agent にインストールを依頼する
 
-必要なディレクトリだけをコピーできます。例えば `quest-design/` と `quest-review/` のみでも利用できます。各ディレクトリ内の `SKILL.md` と `agents/` を保持し、Markdown ファイル 1 つだけをダウンロードしないでください。
-
-`$skill-installer` に対応する Codex 環境では、次のように依頼することもできます。
+次の文を Codex または Skill のインストールに対応した Agent にそのまま送信してください。
 
 ```text
-$skill-installer を使って、cloud-oc/GameQuestDesignerSkill の main ブランチから、
-quest-design と quest-review の各ディレクトリにある Skill をインストールしてください。
+このリポジトリにあるすべての Skill をインストールしてください：https://github.com/cloud-oc/GameQuestDesignerSkill
 ```
-
-すべてインストールする場合は、ディレクトリ一覧を上記の全体インストール用コマンドにある 10 個の名前に置き換えてください。
-
-### インストールの確認と更新
-
-インストール後、次のメッセージで `$quest-design` または `$quest-review` を指定して呼び出します。表示されない場合は、パスが `skills/quest-design/SKILL.md` になっているか、途中に余分なリポジトリ階層が入っていないかを確認してください。
-
-更新には上記の npx コマンドを使用できます。ローカルで管理する場合は ZIP を再ダウンロードするか、リポジトリ内で `git pull --ff-only` を実行し、その後 `node bin/quest-skills.mjs update` でインストール済みコピーを更新してください。手動コピーで置き換える場合は先にバックアップしてください。上記のシェルによるコピーは、既存ディレクトリをスキップします。
-
 ## 使い方
 
 `game-quest-designer/` と、必要な `quest-*/` ディレクトリを、Skill ディレクトリ（Codex では通常 `~/.codex/skills/`）に並列に配置します。各ディレクトリに独自の `SKILL.md` と UI メタデータがあります。このリポジトリに置いてあるだけではインストール済みにはなりません。専門 Skill を総合入口のディレクトリ内に入れ子にしないでください。総合入口は `$game-quest-designer` で呼び出し、各専門 Skill は単独でもインストール・呼び出しが可能です。
