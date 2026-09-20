@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Game Quest Designer — Quest Mark</title>
+  <desc id="desc">构成主义 Q 形徽记：黑色圆环与朱红色尾部，内部为对称直角连线组成的树状分支，连接一个根节点与三个子节点。</desc>
+  <rect width="512" height="512" rx="104" fill="#F4EFE5"/>
+  <circle cx="246" cy="242" r="148" fill="#20231F"/>
+  <circle cx="246" cy="242" r="94" fill="#F4EFE5"/>
+  <path d="M284 324L322 286L416 380L378 418Z" fill="#F4EFE5"/>
+  <path d="M304 332L330 306L412 388L386 414Z" fill="#D74632"/>
+  <path d="M240 199H252V280H240ZM190 232H302V244H190ZM190 244H202V280H190ZM290 244H302V280H290Z" fill="#20231F"/>
+  <circle cx="246" cy="196" r="12" fill="#D74632"/>
+  <circle cx="196" cy="282" r="11" fill="#20231F"/>
+  <circle cx="246" cy="282" r="11" fill="#20231F"/>
+  <circle cx="296" cy="282" r="11" fill="#20231F"/>
+</svg>
