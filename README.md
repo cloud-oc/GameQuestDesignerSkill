@@ -3,7 +3,7 @@
   GameQuestDesignerSkill
 </h1>
 
-[![中文](https://img.shields.io/badge/语言-中文-D74632?style=flat-square)](README.md) [![English](https://img.shields.io/badge/Language-English-20231F?style=flat-square)](README.en.md) [![日本語](https://img.shields.io/badge/言語-日本語-20231F?style=flat-square)](README.ja.md)
+[![npm](https://img.shields.io/npm/v/game-quest-designer-skills?style=flat-square&color=D74632)](https://www.npmjs.com/package/game-quest-designer-skills) [![中文](https://img.shields.io/badge/语言-中文-D74632?style=flat-square)](README.md) [![English](https://img.shields.io/badge/Language-English-20231F?style=flat-square)](README.en.md) [![日本語](https://img.shields.io/badge/言語-日本語-20231F?style=flat-square)](README.ja.md)
 
 面向 RPG 任务设计全流程的自适应 Skill。它从用户提供的任务系统、编辑器说明、剧本和世界观中学习项目规则，形成专属工作流，再完成任务理解、任务定义、流程架构、实现规格、逻辑原型、质量审查、原创任务、制作需求与跨团队交付。
 
@@ -11,25 +11,25 @@ Skill 能识别“章节—幕—任务组—任务—目标”、Quest/Target �
 
 ## 下载与安装
 
-### 使用 npx 安装与更新
+### 使用 npm 安装与更新
 
-需要 Node.js 20 或更高版本及 npm。此入口随仓库提供，无需预先全局安装。
-
-当包含 `package.json` 和 `bin/` 的版本已推送至 GitHub main 后，可以直接从仓库运行：
+需要 Node.js 20 或更高版本及 npm。先安装已发布的 [npm 包](https://www.npmjs.com/package/game-quest-designer-skills)：
 
 ~~~bash
+npm install --global game-quest-designer-skills@latest
+
 # 完整安装（已有 Skill 跳过）
-npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills install
+quest-skills install
 
 # 更新已安装的本套 Skill（不会补装未安装的能力）
-npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills update
+quest-skills update
 
 # 仅安装或更新指定能力
-npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills install quest-design quest-review
-npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills update quest-design quest-review
+quest-skills install quest-design quest-review
+quest-skills update quest-design quest-review
 ~~~
 
-仓库尚未发布 npm 包，因此不要使用 `npx game-quest-designer-skills@latest`。GitHub 方式读取指定分支的版本；需要固定版本时，可把 `#main` 换成已发布的标签或完整 commit SHA。
+升级 CLI 时再次运行 `npm install --global game-quest-designer-skills@latest`。需要固定版本时，将 `@latest` 换成具体版本，例如 `@0.1.0`。如需试用 GitHub `main` 分支的尚未发布内容，可使用 `npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills install`。
 
 已下载仓库时，可直接执行 `node bin/quest-skills.mjs install` 或 `node bin/quest-skills.mjs update`，不依赖 npm 发布。
 

@@ -3,7 +3,7 @@
   GameQuestDesignerSkill
 </h1>
 
-[![中文](https://img.shields.io/badge/语言-中文-20231F?style=flat-square)](README.md) [![English](https://img.shields.io/badge/Language-English-D74632?style=flat-square)](README.en.md) [![日本語](https://img.shields.io/badge/言語-日本語-20231F?style=flat-square)](README.ja.md)
+[![npm](https://img.shields.io/npm/v/game-quest-designer-skills?style=flat-square&color=D74632)](https://www.npmjs.com/package/game-quest-designer-skills) [![中文](https://img.shields.io/badge/语言-中文-20231F?style=flat-square)](README.md) [![English](https://img.shields.io/badge/Language-English-D74632?style=flat-square)](README.en.md) [![日本語](https://img.shields.io/badge/言語-日本語-20231F?style=flat-square)](README.ja.md)
 
 An adaptive skill collection for the full RPG quest design workflow. It learns project rules from your quest system documentation, editor guides, scripts, and worldbuilding materials, then supports quest analysis, definition, flow architecture, implementation specifications, logic prototypes, quality reviews, original quest creation, production requirements, and cross-team handoffs.
 
@@ -11,25 +11,25 @@ The skills recognize structures such as chapter–act–quest group–quest–ob
 
 ## Download and installation
 
-### Install and update with npx
+### Install and update with npm
 
-Requires Node.js 20 or later and npm. The CLI ships with this repository and does not require a global installation.
-
-Once the version containing `package.json` and `bin/` has been pushed to GitHub main, you can run it directly from the repository:
+Requires Node.js 20 or later and npm. Install the published [npm package](https://www.npmjs.com/package/game-quest-designer-skills) first:
 
 ~~~bash
+npm install --global game-quest-designer-skills@latest
+
 # Install all skills (skip existing skills)
-npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills install
+quest-skills install
 
 # Update installed skills in this collection (do not install missing skills)
-npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills update
+quest-skills update
 
 # Install or update selected skills only
-npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills install quest-design quest-review
-npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills update quest-design quest-review
+quest-skills install quest-design quest-review
+quest-skills update quest-design quest-review
 ~~~
 
-This repository has not published an npm package, so do not use `npx game-quest-designer-skills@latest`. The GitHub commands use the specified branch. To pin a version, replace `#main` with a published tag or a full commit SHA.
+Run `npm install --global game-quest-designer-skills@latest` again to upgrade the CLI. To pin a release, replace `@latest` with an exact version such as `@0.1.0`. To try unpublished changes from the GitHub `main` branch, use `npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills install`.
 
 If you have already downloaded the repository, run `node bin/quest-skills.mjs install` or `node bin/quest-skills.mjs update` directly; no npm publication is required.
 

@@ -3,7 +3,7 @@
   GameQuestDesignerSkill
 </h1>
 
-[![中文](https://img.shields.io/badge/语言-中文-20231F?style=flat-square)](README.md) [![English](https://img.shields.io/badge/Language-English-20231F?style=flat-square)](README.en.md) [![日本語](https://img.shields.io/badge/言語-日本語-D74632?style=flat-square)](README.ja.md)
+[![npm](https://img.shields.io/npm/v/game-quest-designer-skills?style=flat-square&color=D74632)](https://www.npmjs.com/package/game-quest-designer-skills) [![中文](https://img.shields.io/badge/语言-中文-20231F?style=flat-square)](README.md) [![English](https://img.shields.io/badge/Language-English-20231F?style=flat-square)](README.en.md) [![日本語](https://img.shields.io/badge/言語-日本語-D74632?style=flat-square)](README.ja.md)
 
 RPG のクエスト設計全体を支援する、プロジェクトに適応可能な Skill 集です。クエストシステムの仕様書、エディターの説明、シナリオ、世界設定からプロジェクトのルールを把握し、クエスト分析、要件定義、フロー設計、実装仕様、ロジックプロトタイプ、品質レビュー、オリジナルクエストの制作、制作要件の整理、チーム間の引き継ぎに対応します。
 
@@ -11,25 +11,25 @@ RPG のクエスト設計全体を支援する、プロジェクトに適応可�
 
 ## ダウンロードとインストール
 
-### npx によるインストールと更新
+### npm によるインストールと更新
 
-Node.js 20 以降と npm が必要です。CLI はリポジトリに含まれており、事前のグローバルインストールは不要です。
-
-`package.json` と `bin/` を含むバージョンが GitHub の main にプッシュされた後は、リポジトリから直接実行できます。
+Node.js 20 以降と npm が必要です。まず、公開済みの [npm パッケージ](https://www.npmjs.com/package/game-quest-designer-skills)をインストールします。
 
 ~~~bash
+npm install --global game-quest-designer-skills@latest
+
 # 全 Skill をインストール（既存の Skill はスキップ）
-npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills install
+quest-skills install
 
 # インストール済みの本コレクションの Skill を更新（未導入の Skill は追加しない）
-npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills update
+quest-skills update
 
 # 指定した Skill のみインストールまたは更新
-npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills install quest-design quest-review
-npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills update quest-design quest-review
+quest-skills install quest-design quest-review
+quest-skills update quest-design quest-review
 ~~~
 
-このリポジトリの npm パッケージはまだ公開されていないため、`npx game-quest-designer-skills@latest` は使用しないでください。GitHub 経由では指定したブランチのバージョンを使用します。バージョンを固定する場合は、`#main` を公開済みタグまたは完全なコミット SHA に置き換えてください。
+CLI を更新するには、`npm install --global game-quest-designer-skills@latest` を再度実行します。バージョンを固定する場合は、`@latest` を `@0.1.0` のような特定のバージョンに置き換えてください。GitHub `main` ブランチの未公開の変更を試す場合は、`npx --yes --package=github:cloud-oc/GameQuestDesignerSkill#main quest-skills install` を使用できます。
 
 リポジトリをダウンロード済みの場合は、`node bin/quest-skills.mjs install` または `node bin/quest-skills.mjs update` を直接実行できます。npm への公開は不要です。
 
