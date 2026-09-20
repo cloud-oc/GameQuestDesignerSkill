@@ -4,7 +4,7 @@ import * as fs from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { validatePackage } from '../bin/validate-quest-package.mjs';
 
-const example = fileURLToPath(new URL('../game-quest-designer/assets/quest-package.example.json', import.meta.url));
+const example = fileURLToPath(new URL('../skills/game-quest-designer/assets/quest-package.example.json', import.meta.url));
 
 test('example quest package is valid', async () => {
   const data = JSON.parse(await fs.readFile(example, 'utf8'));

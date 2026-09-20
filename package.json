@@ -1,6 +1,6 @@
 {
   "name": "game-quest-designer-skills",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Install and update RPG quest design skills for Codex",
   "license": "Apache-2.0",
   "type": "module",
@@ -24,16 +24,6 @@
   },
   "files": [
     "bin/",
-    "game-quest-designer/",
-    "quest-understand/",
-    "quest-design/",
-    "quest-flow/",
-    "quest-spec/",
-    "quest-prototype/",
-    "quest-review/",
-    "quest-requirements/",
-    "quest-collab/",
-    "quest-docs/",
-    "assets/"
+    "skills/"
   ]
 }

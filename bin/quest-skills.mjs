@@ -5,7 +5,8 @@ import os from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { createHash, randomUUID } from 'node:crypto';
 
-const root = fileURLToPath(new URL('../', import.meta.url));
+const packageRoot = fileURLToPath(new URL('../', import.meta.url));
+const skillsRoot = path.join(packageRoot, 'skills');
 const names = [
   'game-quest-designer', 'quest-understand', 'quest-design', 'quest-flow',
   'quest-spec', 'quest-prototype', 'quest-review', 'quest-requirements',
@@ -73,7 +74,7 @@ async function main() {
     if (e.code === 'ENOENT') return dest;
     throw e;
   });
-  if (resolvedDest === root.slice(0, -1) || resolvedDest.startsWith(root)) {
+  if (resolvedDest === packageRoot.slice(0, -1) || resolvedDest.startsWith(packageRoot)) {
     throw new Error('Choose a destination outside the source package');
   }
   const plan = [];
@@ -90,12 +91,12 @@ async function main() {
       if (selected.length) throw new Error(`${name} is not installed; use install first`);
       action = 'skip not installed';
     } else {
-      const sourceHash = await digest(path.join(root, name));
+      const sourceHash = await digest(path.join(skillsRoot, name));
       action = sourceHash === await digest(target) ? 'unchanged' : 'update';
     }
     if (action === 'install' || action === 'update') {
-      await fs.access(path.join(root, name, 'SKILL.md'));
-      await digest(path.join(root, name));
+      await fs.access(path.join(skillsRoot, name, 'SKILL.md'));
+      await digest(path.join(skillsRoot, name));
     }
     plan.push({ name, target, action });
   }
@@ -114,7 +115,7 @@ async function main() {
       const stagedSkill = path.join(stage, item.name);
       let backup;
       try {
-        await fs.cp(path.join(root, item.name), stagedSkill, { recursive: true, errorOnExist: true, force: false });
+        await fs.cp(path.join(skillsRoot, item.name), stagedSkill, { recursive: true, errorOnExist: true, force: false });
         const current = await stat(item.target);
         if (item.action === 'install' && current) throw new Error(`Target appeared during install: ${item.target}`);
         if (item.action === 'update') {

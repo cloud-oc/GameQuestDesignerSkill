@@ -50,7 +50,7 @@ npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-ski
 ```
 ## 使用方式
 
-将 `game-quest-designer/` 和下表中需要的 `quest-*/` 目录并列安装到你的 Skill 目录（Codex 通常为 `~/.codex/skills/`）。每个目录都有自己的 `SKILL.md` 和 UI 元数据；仅放在本仓库中不代表已安装。不要把专项目录嵌套在总入口目录内。总入口使用 `$game-quest-designer`，各专项能力可以单独安装、独立调用。
+仓库源码统一位于 `skills/`；手动安装时，将其中的 `game-quest-designer/` 和需要的 `quest-*/` 目录并列复制到你的 Skill 目录（Codex 通常为 `~/.codex/skills/`）。每个目录都有自己的 `SKILL.md` 和 UI 元数据；仅放在本仓库中不代表已安装。不要把专项目录嵌套在总入口目录内。总入口使用 `$game-quest-designer`，各专项能力可以单独安装、独立调用。
 
 | 调用 | 适用工作 |
 |---|---|
@@ -104,6 +104,17 @@ Skill 会按需要读取参考文件。你提供的项目模板优先；没有�
 
 所有判断应对应项目资料或明确的设计假设；新增方法和验收场景不等于已经完成实际游戏或独立模型验证。
 
-总入口为 [SKILL.md](game-quest-designer/SKILL.md)，独立能力的方法维护在各自的 `SKILL.md` 中。总入口内的 `references/` 保留为仅安装总入口时的基础方法。行为回归场景见 [evals/scenarios.md](evals/scenarios.md)。可使用 skill-creator 自带的 `quick_validate.py` 分别校验十个 Skill 目录；结构检查不等于模型行为和游戏运行验证。
+### 工程目录
+
+```text
+skills/   可独立安装的十个 Skill
+bin/      npm 安装器与中立校验器
+test/     Node.js 结构、安装和校验测试
+evals/    可独立执行的行为评测案例
+site/     GitHub Pages 使用网站
+assets/   仓库级品牌资源
+```
+
+总入口为 [SKILL.md](skills/game-quest-designer/SKILL.md)，独立能力的方法维护在 `skills/*/SKILL.md`。总入口内的 `references/` 保留为仅安装总入口时的基础方法。行为回归场景见 [evals/scenarios.md](evals/scenarios.md)。可使用 skill-creator 自带的 `quick_validate.py` 分别校验 `skills/` 下的十个目录；结构检查不等于模型行为和游戏运行验证。
 
 许可证沿用仓库的 [Apache-2.0](LICENSE)。

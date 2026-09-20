@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 
 const cli = fileURLToPath(new URL('../bin/quest-skills.mjs', import.meta.url));
-const source = fileURLToPath(new URL('../quest-design/SKILL.md', import.meta.url));
+const source = fileURLToPath(new URL('../skills/quest-design/SKILL.md', import.meta.url));
 
 async function workspace(t) {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'quest-install-test-'));

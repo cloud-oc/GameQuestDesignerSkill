@@ -50,7 +50,7 @@ Install all skills from this repository: https://github.com/cloud-oc/GameQuestDe
 ```
 ## Usage
 
-Install `game-quest-designer/` and the `quest-*/` directories you need side by side in your skill directory (typically `~/.codex/skills/` for Codex). Each has its own `SKILL.md` and UI metadata. Keeping them in this repository alone does not install them. Do not nest specialized skills inside the main skill directory. Use `$game-quest-designer` for the main entry point; specialized skills can be installed and invoked independently.
+Repository sources live under `skills/`. For a manual installation, copy `game-quest-designer/` and the `quest-*/` directories you need from there, side by side, into your skill directory (typically `~/.codex/skills/` for Codex). Each has its own `SKILL.md` and UI metadata. Keeping them in this repository alone does not install them. Do not nest specialized skills inside the main skill directory. Use `$game-quest-designer` for the main entry point; specialized skills can be installed and invoked independently.
 
 | Invocation | Use case |
 |---|---|
@@ -105,6 +105,17 @@ The design methods cover practical RPG production concerns: player motivation an
 
 Judgments must be grounded in project materials or explicit design assumptions. Adding methods and acceptance scenarios does not mean game runtime testing or independent model validation has been completed.
 
-The main entry point is [SKILL.md](game-quest-designer/SKILL.md). Specialized methods live in each skill's own `SKILL.md`. The main skill's `references/` directory provides baseline methods when only that skill is installed. See [evals/scenarios.md](evals/scenarios.md) for behavioral regression scenarios. Use skill-creator's `quick_validate.py` to check each of the ten skill directories individually; structural checks do not establish model behavior or game runtime correctness.
+### Repository layout
+
+```text
+skills/   Ten independently installable skills
+bin/      npm installer and neutral validator
+test/     Node.js structure, installer, and validator tests
+evals/    Independently runnable behavioral evaluation cases
+site/     GitHub Pages usage website
+assets/   Repository-level brand assets
+```
+
+The main entry point is [SKILL.md](skills/game-quest-designer/SKILL.md). Specialized methods live in `skills/*/SKILL.md`. The main skill's `references/` directory provides baseline methods when only that skill is installed. See [evals/scenarios.md](evals/scenarios.md) for behavioral regression scenarios. Use skill-creator's `quick_validate.py` to check each of the ten directories under `skills/`; structural checks do not establish model behavior or game runtime correctness.
 
 Licensed under [Apache-2.0](LICENSE).

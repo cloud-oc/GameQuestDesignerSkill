@@ -50,7 +50,7 @@ npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-ski
 ```
 ## 使い方
 
-`game-quest-designer/` と、必要な `quest-*/` ディレクトリを、Skill ディレクトリ（Codex では通常 `~/.codex/skills/`）に並列に配置します。各ディレクトリに独自の `SKILL.md` と UI メタデータがあります。このリポジトリに置いてあるだけではインストール済みにはなりません。専門 Skill を総合入口のディレクトリ内に入れ子にしないでください。総合入口は `$game-quest-designer` で呼び出し、各専門 Skill は単独でもインストール・呼び出しが可能です。
+リポジトリのソースは `skills/` に集約されています。手動インストールでは、その中の `game-quest-designer/` と必要な `quest-*/` ディレクトリを、Skill ディレクトリ（Codex では通常 `~/.codex/skills/`）に並列にコピーします。各ディレクトリに独自の `SKILL.md` と UI メタデータがあります。このリポジトリに置いてあるだけではインストール済みにはなりません。専門 Skill を総合入口のディレクトリ内に入れ子にしないでください。総合入口は `$game-quest-designer` で呼び出し、各専門 Skill は単独でもインストール・呼び出しが可能です。
 
 | 呼び出し | 用途 |
 |---|---|
@@ -105,6 +105,17 @@ $game-quest-designer を使って、提供したクエストシステムの説�
 
 判断はプロジェクト資料または明示した設計上の仮定に基づきます。手法と受け入れシナリオを追加したことは、実際のゲームでの検証や独立したモデル評価が完了したことを意味しません。
 
-総合入口は [SKILL.md](game-quest-designer/SKILL.md) です。専門手法は各 Skill の `SKILL.md` で管理します。総合入口の `references/` は、総合 Skill だけをインストールした場合の基本手法として残しています。振る舞いの回帰シナリオは [evals/scenarios.md](evals/scenarios.md) を参照してください。skill-creator 付属の `quick_validate.py` で 10 個の Skill ディレクトリを個別に確認できます。構造検証だけでは、モデルの振る舞いやゲーム実行時の正しさは保証できません。
+### リポジトリ構成
+
+```text
+skills/   個別にインストール可能な 10 個の Skill
+bin/      npm インストーラーと中立バリデーター
+test/     Node.js の構造・インストール・検証テスト
+evals/    個別実行可能な振る舞い評価ケース
+site/     GitHub Pages の利用ガイド
+assets/   リポジトリ共通のブランド素材
+```
+
+総合入口は [SKILL.md](skills/game-quest-designer/SKILL.md) です。専門手法は `skills/*/SKILL.md` で管理します。総合入口の `references/` は、総合 Skill だけをインストールした場合の基本手法として残しています。振る舞いの回帰シナリオは [evals/scenarios.md](evals/scenarios.md) を参照してください。skill-creator 付属の `quick_validate.py` で `skills/` 配下の 10 ディレクトリを個別に確認できます。構造検証だけでは、モデルの振る舞いやゲーム実行時の正しさは保証できません。
 
 ライセンスは [Apache-2.0](LICENSE) です。

@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
+const skillsRoot = path.join(root, 'skills');
 const skillNames = [
   'game-quest-designer', 'quest-understand', 'quest-design', 'quest-flow',
   'quest-spec', 'quest-prototype', 'quest-review', 'quest-requirements',
@@ -21,9 +22,20 @@ async function filesBelow(dir) {
   return result;
 }
 
+test('repository keeps distributable skills under one canonical directory', async () => {
+  const entries = (await fs.readdir(skillsRoot, { withFileTypes: true }))
+    .filter(entry => entry.isDirectory())
+    .map(entry => entry.name)
+    .sort();
+  assert.deepEqual(entries, [...skillNames].sort());
+  for (const name of skillNames) {
+    await assert.rejects(fs.access(path.join(root, name)), `${name} must not be duplicated at repository root`);
+  }
+});
+
 test('all skill entrypoints keep matching frontmatter and local markdown links resolve', async () => {
   for (const name of skillNames) {
-    const dir = path.join(root, name);
+    const dir = path.join(skillsRoot, name);
     const skill = await fs.readFile(path.join(dir, 'SKILL.md'), 'utf8');
     assert.match(skill, new RegExp(`^---\\r?\\nname: ${name}\\r?$`, 'm'), `${name} frontmatter name`);
     for (const file of (await filesBelow(dir)).filter(value => value.endsWith('.md'))) {
@@ -52,12 +64,9 @@ test('professionalization assets and references are shipped by the package', asy
     'quest-requirements/assets/quest-production-requirements-template.md',
     'game-quest-designer/assets/quest-package.example.json',
   ];
-  for (const relative of required) await fs.access(path.join(root, relative));
+  for (const relative of required) await fs.access(path.join(skillsRoot, relative));
   const pkg = JSON.parse(await fs.readFile(path.join(root, 'package.json'), 'utf8'));
-  assert.equal(pkg.version, '0.2.0');
+  assert.equal(pkg.version, '0.2.1');
   assert.equal(pkg.bin['quest-package-validate'], 'bin/validate-quest-package.mjs');
-  for (const relative of required) {
-    const top = relative.split('/')[0] + '/';
-    assert.ok(pkg.files.includes(top), `${relative} top-level directory is distributed`);
-  }
+  assert.ok(pkg.files.includes('skills/'), 'skills directory is distributed');
 });
