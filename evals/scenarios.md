@@ -2,6 +2,18 @@
 
 在独立对话中加载本 Skill，逐个提供以下输入。评价实际设计与结论，不要求固定措辞或标题。以下是人工验收场景，不是已通过的模型运行报告。
 
+## 0.2.0 独立案例
+
+以下重点案例已拆成可单独投喂、单独记录结果的文件：
+
+- [同题材在不同项目契约下的适配](cases/project-contract-adaptation.md)
+- [模式库提供启发但不造成套皮](cases/pattern-not-formula.md)
+- [有意线性慢节奏任务的误报控制](cases/intentional-linear-pacing.md)
+- [完整草案不被强制确认打断](cases/autonomous-complete-draft.md)
+- [跨产物 ID 追溯](cases/cross-artifact-traceability.md)
+- [缺少 schema 时拒绝伪造配置](cases/no-schema-no-import.md)
+- [中立任务包校验器](cases/quest-package-validator.md)
+
 ## 独立调用覆盖
 
 以下专项场景仅加载对应目录的 Skill，不预先加载总入口。检查实际产物能否独立完成工作；不能仅以出现了某些标题或关键词判定通过。

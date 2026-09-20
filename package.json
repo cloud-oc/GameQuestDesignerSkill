@@ -1,18 +1,22 @@
 {
   "name": "game-quest-designer-skills",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Install and update RPG quest design skills for Codex",
   "license": "Apache-2.0",
   "type": "module",
   "bin": {
     "quest-skills": "bin/quest-skills.mjs",
-    "game-quest-designer-skills": "bin/quest-skills.mjs"
+    "game-quest-designer-skills": "bin/quest-skills.mjs",
+    "quest-package-validate": "bin/validate-quest-package.mjs"
   },
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "verify": "npm test",
+    "build": "npm pack",
+    "prepack": "npm run verify"
   },
   "repository": {
     "type": "git",

@@ -9,6 +9,16 @@
 
 Skill 能识别“章节—幕—任务组—任务—目标”、Quest/Target 和声明式任务分工，但只在项目资料确认采用这些规则时启用；不会把某个团队的内部流程当成所有 RPG 的通用事实。没有项目资料时也能做概念草案，但会明确未确认的系统能力。项目私有资料保存在用户项目内，不放进通用 Skill。
 
+## 0.2.0 专业化能力
+
+- `$quest-understand` 提供可复制的任务项目契约，把玩家动词、任务生命周期、知识状态、选择后果、共享世界、恢复规则与制作边界整理为有来源的项目约定。
+- `$quest-design` 提供十类 RPG 任务模式和从矛盾、玩家承诺到低成本版本的推导法；模式用于校准，不用于套皮。
+- `$quest-review` 提供八维可观察质量标尺与十类反模式，不计算通用总分，也不会把线性、慢节奏或无战斗自动判为缺陷。
+- 任务简报、流程架构、实现规格、制作需求和评审报告各有可选 Markdown 模板；仅按请求调用，不默认生成全套。
+- 需要跨文档机器校验时，可额外生成中立的 `quest-package.json`，再运行 `quest-package-validate <path>` 检查 ID、引用、可达性和追溯关系。它不是引擎配置。
+
+本版本不包含大型交互 HTML 或自动沉淀知识；项目资料只在用户授权时写入用户项目。
+
 ## 安装
 
 ### 使用 npx
@@ -74,11 +84,21 @@ npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-ski
 
 Skill 会按需要读取参考文件。你提供的项目模板优先；没有模板时使用最小可读结构。只有掌握真实配置格式且用户要求时才输出机器配置，设计走查不等于引擎测试。
 
+完整交付可以让相关专项 Skill 复制各自的 `assets/*-template.md`。模板中的任务、节拍、需求和测试 ID 用于跨产物追溯；不适用字段应删除，不应为了填表扩大范围。
+
 开发文档中设想的云文档适配器、同步脚本和解析器不被伪装成已实现能力；当前 Skill 会优先使用运行环境中真实可用的文档工具，并对覆盖、批量同步等操作保留明确授权边界。
 
 ## 维护与验证
 
-安装器使用 Node.js 标准库，无第三方运行依赖。运行 `npm test` 验证安装、更新、备份、重复执行、预览和目标保护；运行 `npm pack --dry-run` 检查分发文件。npx 负责取得指定版本的安装器，安装器本身只操作随包分发的 Skill，不执行 Git 拉取。
+安装器和任务包校验器使用 Node.js 标准库，无第三方运行依赖。运行 `npm test` 验证安装、更新、备份、内容链接、模板分发和任务包校验；运行 `npm pack --dry-run` 检查分发文件。npx 负责取得指定版本的安装器，安装器本身只操作随包分发的 Skill，不执行 Git 拉取。
+
+### 自动构建与发布
+
+- 任意 push 或 pull request 会运行 Node.js 20/24 验证，随后自动生成 npm `.tgz`，作为 GitHub Actions 构建产物保留 14 天。
+- 本地运行 `npm run build` 也会先经 `prepack` 自动执行全部测试，再生成 tarball；`npm publish` 同样不能绕过该门禁。
+- 推送与 `package.json` 版本一致的 `v*` 标签时，`publish.yml` 会通过 npm Trusted Publishing 自动发布。例如先运行 `npm version patch`，再运行 `git push origin main --follow-tags`。
+
+首次自动发布前，需要在 npm 包 `game-quest-designer-skills` 的 Settings → Trusted Publisher 中添加 GitHub Actions：组织/用户填 `cloud-oc`，仓库填 `GameQuestDesignerSkill`，工作流文件填 `publish.yml`，并允许直接执行 `npm publish`。该账户级设置只需一次；未配置时构建仍会成功，但标签发布会因无法认证而失败。发布工作流使用 OIDC，不需要在 GitHub 保存长期 `NPM_TOKEN`。
 
 业务方法覆盖 RPG 制作中的具体问题：玩家动机与信息揭示、选择后果与分支成本、共享 NPC 和世界状态、目标计数与奖励结算、存档/重入恢复，以及配置验收与试玩观察。相关细节按需加载到任务设计、流程、规格和验证能力中。
 

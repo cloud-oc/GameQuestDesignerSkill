@@ -9,6 +9,16 @@ An adaptive skill collection for the full RPG quest design workflow. It learns p
 
 The skills recognize structures such as chapter–act–quest group–quest–objective, Quest/Target models, and declarative quest systems, but apply them only when your project materials confirm their use. One team's internal workflow is not treated as a universal RPG standard. Concept drafts are possible without project documentation, with unconfirmed capabilities clearly identified. Private project materials stay in your project, outside the reusable skill package.
 
+## 0.2.0 professionalization
+
+- `$quest-understand` includes a copyable quest project contract for player verbs, lifecycle, knowledge state, consequences, shared-world rules, recovery, and production boundaries.
+- `$quest-design` includes ten RPG quest patterns and a derivation method from conflict and player promise to a lower-cost version. Patterns are references, not reskin formulas.
+- `$quest-review` includes an eight-dimension observable quality rubric and ten anti-patterns. It does not compute a universal score or reject linear, slow, or non-combat quests by default.
+- Quest brief, flow, implementation spec, production requirements, and review report each have an optional Markdown template. Skills use only the requested artifacts.
+- For machine-checkable cross-document traceability, an optional neutral `quest-package.json` can be validated with `quest-package-validate <path>`. It checks IDs, references, reachability, and traceability; it is not engine configuration.
+
+This release does not add a large interactive HTML renderer or automatic knowledge capture. Project material is written only to the user's project with authorization.
+
 ## Installation
 
 ### Use npx
@@ -75,11 +85,21 @@ Examples: `$quest-design Design an investigation-focused village side quest that
 
 The skills load references as needed. Your project templates take priority; otherwise, they use a minimal readable structure. Machine configuration is produced only when requested and when the real format is known. A design walkthrough is not an engine test.
 
+For a complete handoff, the relevant specialist skill can copy its `assets/*-template.md`. Quest, beat, requirement, and test IDs remain stable across artifacts. Irrelevant fields should be removed rather than expanding scope to fill a template.
+
 Cloud-document adapters, synchronization scripts, and parsers proposed in the development document are not presented as implemented features. The skills use document tools actually available in the environment and maintain explicit authorization boundaries for replacement and bulk synchronization.
 
 ## Maintenance and validation
 
-The installer uses the Node.js standard library with no third-party runtime dependencies. Run `npm test` to check installation, updates, backups, repeated execution, previews, and destination protection. Run `npm pack --dry-run` to inspect package contents. npx retrieves the specified installer version; the installer operates only on bundled skills and does not run Git pulls.
+The installer and quest-package validator use only the Node.js standard library and have no third-party runtime dependencies. Run `npm test` to validate install/update safety, content links, template distribution, and quest-package checks. Run `npm pack --dry-run` to inspect package contents. npx retrieves the specified installer version; the installer operates only on bundled skills and does not run Git pulls.
+
+### Automated builds and publishing
+
+- Every push and pull request validates on Node.js 20 and 24, then builds an npm `.tgz` artifact retained by GitHub Actions for 14 days.
+- `npm run build` runs the complete test suite through `prepack` before creating a tarball. The same gate applies to `npm publish`.
+- Pushing a `v*` tag that matches `package.json` publishes through npm Trusted Publishing. For example, run `npm version patch`, then `git push origin main --follow-tags`.
+
+Before the first automated release, add a GitHub Actions Trusted Publisher in the npm settings for `game-quest-designer-skills`: owner `cloud-oc`, repository `GameQuestDesignerSkill`, workflow filename `publish.yml`, with direct `npm publish` allowed. This is a one-time account setting. Builds still work without it, but tagged publishing will fail authentication. The workflow uses OIDC and does not require a long-lived `NPM_TOKEN` secret.
 
 The design methods cover practical RPG production concerns: player motivation and information reveals, choice consequences and branching costs, shared NPCs and world state, objective counting and reward settlement, save/re-entry recovery, configuration acceptance, and playtest observation. Details are loaded as needed by the design, flow, specification, and validation skills.
 

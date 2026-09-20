@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0",
+  "projectId": "example-rpg",
+  "sourceVersion": "quest-design-v1",
+  "quests": [
+    {
+      "id": "Q-001",
+      "entryStateId": "S-START",
+      "terminalStateIds": ["S-DONE"],
+      "beatIds": ["B-001", "B-002"],
+      "requirementIds": ["REQ-001"],
+      "testIds": ["T-001"]
+    }
+  ],
+  "beats": [
+    {
+      "id": "B-001",
+      "fromStateId": "S-START",
+      "toStateIds": ["S-EVIDENCE"],
+      "requirementIds": ["REQ-001"],
+      "testIds": ["T-001"]
+    },
+    {
+      "id": "B-002",
+      "fromStateId": "S-EVIDENCE",
+      "toStateIds": ["S-DONE"],
+      "requirementIds": [],
+      "testIds": ["T-001"]
+    }
+  ],
+  "requirements": [
+    { "id": "REQ-001", "sourceBeatIds": ["B-001"] }
+  ],
+  "tests": [
+    {
+      "id": "T-001",
+      "questIds": ["Q-001"],
+      "beatIds": ["B-001", "B-002"],
+      "requirementIds": ["REQ-001"]
+    }
+  ]
+}

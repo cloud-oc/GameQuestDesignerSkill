@@ -1,0 +1,53 @@
+name: Build npm package
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate on Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 24]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+          package-manager-cache: false
+      - name: Run tests and skill integrity checks
+        run: npm run verify
+
+  build:
+    name: Build tarball
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Build npm package
+        run: npm run build
+      - name: Upload npm package
+        uses: actions/upload-artifact@v7
+        with:
+          name: npm-package-${{ github.sha }}
+          path: game-quest-designer-skills-*.tgz
+          if-no-files-found: error
+          retention-days: 14
