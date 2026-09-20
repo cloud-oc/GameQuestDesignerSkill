@@ -5,19 +5,19 @@
 
 [![npm](https://img.shields.io/npm/v/game-quest-designer-skills?style=flat-square&color=D74632)](https://www.npmjs.com/package/game-quest-designer-skills) [![中文](https://img.shields.io/badge/语言-中文-D74632?style=flat-square)](README.md) [![English](https://img.shields.io/badge/Language-English-20231F?style=flat-square)](README.en.md) [![日本語](https://img.shields.io/badge/言語-日本語-20231F?style=flat-square)](README.ja.md)
 
-面向 RPG 任务设计全流程的自适应 Skill。它从用户提供的任务系统、编辑器说明、剧本和世界观中学习项目规则，形成专属工作流，再完成任务理解、任务定义、流程架构、实现规格、逻辑原型、质量审查、原创任务、制作需求与跨团队交付。
+**把任务，设计成难忘的经历。**
 
-Skill 能识别“章节—幕—任务组—任务—目标”、Quest/Target 和声明式任务分工，但只在项目资料确认采用这些规则时启用；不会把某个团队的内部流程当成所有 RPG 的通用事实。没有项目资料时也能做概念草案，但会明确未确认的系统能力。项目私有资料保存在用户项目内，不放进通用 Skill。
+一套帮助你设计 RPG 任务的 Skill。把故事想法变成玩家能参与的任务：为什么接下委托、每一步做什么、选择会改变什么，再整理成团队能用的流程和制作文档。
 
-## 0.2.0 专业化能力
+有项目资料时，先读懂已有规则；只有一个点子时，也可以从标明假设的草案开始。不同项目的引擎能力和资源各有不同，Skill 会以你提供的资料为准。项目私有资料只保存在你的项目中。
 
-- `$quest-understand` 提供可复制的任务项目契约，把玩家动词、任务生命周期、知识状态、选择后果、共享世界、恢复规则与制作边界整理为有来源的项目约定。
-- `$quest-design` 提供十类 RPG 任务模式和从矛盾、玩家承诺到低成本版本的推导法；模式用于校准，不用于套皮。
-- `$quest-review` 提供八维可观察质量标尺与十类反模式，不计算通用总分，也不会把线性、慢节奏或无战斗自动判为缺陷。
-- 任务简报、流程架构、实现规格、制作需求和评审报告各有可选 Markdown 模板；仅按请求调用，不默认生成全套。
-- 需要跨文档机器校验时，可额外生成中立的 `quest-package.json`，再运行 `quest-package-validate <path>` 检查 ID、引用、可达性和追溯关系。它不是引擎配置。
+## 可以帮你做什么
 
-本版本不包含大型交互 HTML 或自动沉淀知识；项目资料只在用户授权时写入用户项目。
+- **了解项目**：用 `$quest-understand` 整理可用玩法、任务规则和待确认问题，方便后续设计。
+- **构思任务**：用 `$quest-design` 想清人物的矛盾、玩家能做的事和选择的后果，并比较不同制作成本的方案。
+- **检查与修改**：用 `$quest-review` 找出具体场景中的问题，解释原因并给出修改建议。线性、慢节奏或没有战斗本身不算缺陷。
+- **准备文档**：按需生成任务简报、流程、实现规格、制作需求或评审记录，不必每次填写全套模板。
+- **核对文档引用**：可选的 `quest-package.json` 把任务、步骤、需求和测试关联起来。用 `quest-package-validate <path>` 检查重复编号、失效引用和不可达节点。它不是引擎配置。
 
 ## 安装
 
@@ -118,3 +118,11 @@ assets/   仓库级品牌资源
 总入口为 [SKILL.md](skills/game-quest-designer/SKILL.md)，独立能力的方法维护在 `skills/*/SKILL.md`。总入口内的 `references/` 保留为仅安装总入口时的基础方法。行为回归场景见 [evals/scenarios.md](evals/scenarios.md)。可使用 skill-creator 自带的 `quick_validate.py` 分别校验 `skills/` 下的十个目录；结构检查不等于模型行为和游戏运行验证。
 
 许可证沿用仓库的 [Apache-2.0](LICENSE)。
+
+## 网站与文案维护
+
+网站提供[中文](https://cloud-oc.github.io/GameQuestDesignerSkill/)、[英文](https://cloud-oc.github.io/GameQuestDesignerSkill/en.html)和[日文](https://cloud-oc.github.io/GameQuestDesignerSkill/ja.html)。语言链接会保留当前章节；每个语言版本都有独立 URL，刷新或分享链接时仍是所选语言。
+
+修改 `site/locales/` 中的对应文案后，运行 `npm run build:site` 生成三个静态页面，再运行 `npm test`。布局共用 `site/build.mjs` 和 CSS；页面正文不依赖 JavaScript。提交时一起提交生成的 HTML，测试会检查它们是否与文案一致。
+
+Skill 的写作原则是先说明玩家遇到什么、要做什么、做完改变什么，再展开条件和制作细节。具体写法见[设计表达与示例](skills/game-quest-designer/references/writing-style.md)。

@@ -16,7 +16,8 @@
     "test": "node --test",
     "verify": "npm test",
     "build": "npm pack",
-    "prepack": "npm run verify"
+    "prepack": "npm run verify",
+    "build:site": "node site/build.mjs"
   },
   "repository": {
     "type": "git",

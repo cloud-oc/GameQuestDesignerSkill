@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RPG のクエスト設計を支える Skill 集。物語、プレイヤーの行動、進行ルールを考え、チームが制作に使える資料にまとめます。">
+  <meta name="theme-color" content="#171a17">
+  <link rel="canonical" href="https://cloud-oc.github.io/GameQuestDesignerSkill/ja.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://cloud-oc.github.io/GameQuestDesignerSkill/">
+  <link rel="alternate" hreflang="en" href="https://cloud-oc.github.io/GameQuestDesignerSkill/en.html">
+  <link rel="alternate" hreflang="ja" href="https://cloud-oc.github.io/GameQuestDesignerSkill/ja.html">
+  <link rel="alternate" hreflang="x-default" href="https://cloud-oc.github.io/GameQuestDesignerSkill/">
+  <link rel="icon" href="assets/quest-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="sections.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="order.css">
+  <link rel="stylesheet" href="readability.css">
+  <title>Game Quest Designer — クエストを、心に残る体験へ。</title>
+</head>
+<body data-copied="クリップボードにコピーしました" data-copy-fallback="自動コピーに失敗しました。以下の内容をコピーしてください：">
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="ホームに戻る"><img src="assets/quest-icon.svg" alt="" width="38" height="38"><span><b>Game Quest</b><small>Designer Skill</small></span></a>
+    <nav id="site-nav" class="site-nav" aria-label="メインナビゲーション" data-nav><a href="#start">使い始める</a><a href="#skills">Skill を選ぶ</a><a href="#contract">クエストの例</a><a href="#faq">よくある質問</a></nav>
+    <div class="header-actions">
+      <a class="github-icon" href="https://github.com/cloud-oc/GameQuestDesignerSkill" aria-label="GitHub でプロジェクトを見る" title="GitHub でプロジェクトを見る"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.64 1.22 3.28.93.1-.73.4-1.22.72-1.5-2.5-.29-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.29-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.15a10.8 10.8 0 0 1 5.63 0c2.15-1.46 3.1-1.15 3.1-1.15.61 1.55.23 2.69.11 2.98.72.79 1.16 1.79 1.16 3.02 0 4.32-2.64 5.27-5.15 5.55.4.35.76 1.03.76 2.08v3.11c0 .3.2.65.78.54A11.25 11.25 0 0 0 12 .75Z"/></svg></a>
+    <details class="language-switch" data-language-menu><summary aria-label="言語を選択">日本語<span aria-hidden="true">⌄</span></summary><nav class="language-options" aria-label="言語を選択"><a href="index.html" lang="zh-CN" hreflang="zh-CN" data-language>中文</a><a href="en.html" lang="en" hreflang="en" data-language>English</a><a href="ja.html" lang="ja" hreflang="ja" data-language aria-current="page">日本語</a></nav></details>
+      <button class="nav-toggle" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">Game Quest Designer · v0.2.1</p>
+        <h1>クエストを、<br><em>心に残る体験へ。</em></h1>
+        <p class="hero-lead">RPG のクエスト設計を支える Skill 集です。物語、遊び、テンポ、行動への反応をつなぎ、最初の出会いから結末まで、一つの体験として磨き上げます。</p>
+        <div class="install-box">
+          <div class="tab-list" role="tablist" aria-label="インストール方法">
+            <button role="tab" aria-selected="true" aria-controls="npm-panel" id="npm-tab" data-tab="npm-panel">npm</button>
+            <button role="tab" aria-selected="false" aria-controls="agent-panel" id="agent-tab" tabindex="-1" data-tab="agent-panel">Agent に依頼</button>
+          </div>
+          <div id="npm-panel" role="tabpanel" aria-labelledby="npm-tab" data-panel><code>npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install</code><button type="button" class="copy-button" data-copy="npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install" aria-label="インストールコマンドをコピー">コピー</button></div>
+          <div id="agent-panel" role="tabpanel" aria-labelledby="agent-tab" data-panel hidden><code>cloud-oc/GameQuestDesignerSkill をインストールしてください</code><button type="button" class="copy-button" data-copy="cloud-oc/GameQuestDesignerSkill をインストールしてください">コピー</button></div>
+        </div>
+        <div class="hero-actions"><a class="button primary" href="#start">最初のクエストを作る ↓</a><a class="button ghost" href="https://github.com/cloud-oc/GameQuestDesignerSkill">ソースを見る ↗</a></div>
+      </div>
+      <div class="quest-map"><div class="map-title"><span>アイデアからクエストへ</span><small>必要なところから始められます</small></div><ol><li><span>1</span><div><b>プロジェクトを知る</b><small>使える仕組みや素材は？</small></div></li><li><span>2</span><div><b>クエストを考える</b><small>プレイヤーが関わる理由は？</small></div></li><li><span>3</span><div><b>流れを組み立てる</b><small>各場面で何をする？</small></div></li><li><span>4</span><div><b>ルールを決める</b><small>何をすれば進行・完了する？</small></div></li><li><span>5</span><div><b>ロジックを確かめる</b><small>中断やロード後も続けられる？</small></div></li><li><span>6</span><div><b>制作内容をまとめる</b><small>各チームが作るものは？</small></div></li></ol></div>
+    </section>
+    <section class="section quick-start" id="start">
+      <div class="section-heading"><h2>インストールしたら、作りたい内容を伝える</h2><p>完成した脚本でも、思いついたばかりのアイデアでも大丈夫です。まずは草案を作り、少しずつ具体化します。</p></div>
+      <div class="steps-grid"><article><span class="step-no">01</span><h3>Skill をインストール</h3><p>以下のコマンドをターミナルで実行します。対応する Agent の保存先を探してインストールします。</p><div class="mini-code"><code>npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install</code><button type="button" class="copy-button" data-copy="npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install" aria-label="インストールコマンドをコピー">コピー</button></div></article><article><span class="step-no">02</span><h3>クエストを伝える</h3><p>舞台設定、プレイヤーに体験してほしいこと、手元の資料を共有します。</p><blockquote>$game-quest-designer で港の失踪事件を扱うサブクエストを作ってください。プレイヤー自身が手がかりを探し、既存の場所をできるだけ使う案にしたいです。不明点は仮定としてまとめてください。</blockquote></article><article><span class="step-no">03</span><h3>気になる部分を詰める</h3><p>作業に合う Skill を指定して、続きを進めます。</p><blockquote>$quest-prototype でこの流れを確認してください。帳簿を先に見つけた場合や、調査の途中でロードした場合も進められますか？</blockquote></article></div>
+    </section>
+    <section class="section skills-section" id="skills">
+      <div class="section-heading"><h2>今やりたいことから Skill を選ぶ</h2><p>迷ったら $game-quest-designer に相談してください。依頼に合う方法を選んで進めます。</p></div>
+      <div class="skill-grid"><article class="skill-card featured"><h3>総合窓口</h3><p>相談内容に合わせて、必要な設計作業を進めます。</p><code>$game-quest-designer</code></article><article class="skill-card"><h3>プロジェクトを理解する</h3><p>仕様書と既存クエストを読み、使える機能と確認が必要な点を整理します。</p><code>$quest-understand</code></article><article class="skill-card"><h3>クエストを考える</h3><p>人物の悩み、プレイヤーの動機、自分で関わりたくなる行動を考えます。</p><code>$quest-design</code></article><article class="skill-card"><h3>流れを組み立てる</h3><p>物語を遊べる手順に分け、分岐と結末を整理します。</p><code>$quest-flow</code></article><article class="skill-card"><h3>実装ルールを書く</h3><p>開始条件、進行状態、完了の判定を開発者に伝わる形にします。</p><code>$quest-spec</code></article><article class="skill-card"><h3>ロジックを確かめる</h3><p>通常の進め方と想定外の行動を確認し、進行不能になる箇所を探します。</p><code>$quest-prototype</code></article><article class="skill-card"><h3>制作内容をまとめる</h3><p>必要な場所、人物、会話、演出と、その用途や確認方法を整理します。</p><code>$quest-requirements</code></article><article class="skill-card"><h3>チームへ引き継ぐ</h3><p>プログラム、レベルデザイン、アート、UI の各担当に必要な情報をまとめます。</p><code>$quest-collab</code></article><article class="skill-card"><h3>レビューして直す</h3><p>具体的な場面から問題と影響を説明し、修正案を出します。</p><code>$quest-review</code></article><article class="skill-card"><h3>資料を整理する</h3><p>出典と版の違いを残しながら、資料の読み取り、編集、同期を行います。</p><code>$quest-docs</code></article></div>
+    </section>
+    <section class="section contract-section" id="contract">
+      <div class="section-heading"><h2>たとえば、港の失踪事件なら</h2><p>同じ物語でも、使える仕組みによって遊び方は変わります。まずは設計に関わるルールをいくつか整理します。</p></div>
+      <div class="contract-demo"><div class="contract-sheet"><h3>架空のプロジェクトの条件</h3><dl><div><dt>使える行動</dt><dd>観察、会話、交換、潜入</dd></div><div><dt>手がかりの記録</dt><dd>発見した手がかりを個別に記録</dd></div><div><dt>人物の制約</dt><dd>重要な NPC は永久に死亡しない</dd></div><div><dt>未確認の仕様</dt><dd>マップをまたぐ護衛のロード後の再開</dd></div><div><dt>草案の制作範囲</dt><dd>夜の港と既存 NPC 3 人を再利用</dd></div></dl></div>
+      <div class="contract-result"><h3>マーカーを追うだけでなく、自分で真相を探る。</h3><ul><li><span>01</span><p><b>矛盾に気づく</b>積荷目録には北岸行きとあるのに、港の作業員は船が南へ向かったと言う。手がかりを得ると、新たな質問ができる。</p></li><li><span>02</span><p><b>調べ方を選ぶ</b>交換か潜入で帳簿を手に入れる。どちらの経路も倉庫で合流し、新規の場所を増やしすぎない。</p></li><li><span>03</span><p><b>選択の結果を残す</b>作業員を守るかどうかを選ぶ。同じ本筋に戻っても、その後の人物の反応は選択に応じて変わる。</p></li></ul><p class="example-note">護衛のセーブ仕様は未確認なので、草案では「待ち合わせ」にします。これは設計例であり、あなたのプロジェクトで利用できる機能を示すものではありません。</p></div></div>
+    </section>
+    <section class="section delivery-section" id="delivery">
+      <div class="section-heading"><h2>チームが読んで制作に使える資料へ</h2><p>今必要な部分だけをまとめます。まず遊び方を説明し、その後に ID、条件、制作の詳細を添えます。</p></div>
+      <div class="deliverable-grid"><article><h3>クエスト概要</h3><p>どんな物語で、なぜ関わり、最後に何が変わるのか。</p></article><article><h3>進行フロー</h3><p>各段階の目標、行動、反応と、分岐の合流先。</p></article><article><h3>実装仕様</h3><p>開始と完了の条件、失敗時の処理、ロード後の再開方法。</p></article><article><h3>制作要件</h3><p>必要な素材、再利用できるもの、完成を確認する方法。</p></article><article><h3>レビュー記録</h3><p>問題が起こる場面と影響、修正案、再確認の方法。</p></article></div>
+      <div class="validator-block"><div class="validator-copy"><h3>資料が増えたら、参照の漏れも確認</h3><p>任意の quest-package.json でクエスト、手順、制作要件、テストを関連づけられます。検証ツールは ID の重複、参照切れ、到達できないノードを検出します。エンジンの設定ファイルではなく、実機テストの代わりにもなりません。</p></div><div class="terminal" aria-label="検証コマンドの例"><div><span>quest-package-validate</span></div><pre>npx --yes --package=game-quest-designer-skills@latest \
+  -- quest-package-validate ./quest-package.json</pre></div></div>
+    </section>
+    <section class="section faq-section" id="faq"><div class="section-heading"><h2>使い始める前によくある質問</h2></div><div class="faq-list"><details><summary>先にすべての仕様を整理する必要がありますか？<span aria-hidden="true">+</span></summary><p>いいえ。小さな作業ならすぐに始め、不足している情報は仮定として残せます。新しいプロジェクトや共同作業では、設計に関わるルールを整理すると役立ちます。</p></details><details><summary>エンジン用の設定を直接生成できますか？<span aria-hidden="true">+</span></summary><p>実際の設定形式、プロジェクトの規約、利用可能なツールが必要です。資料がない場合は、チームで検討・実装するための仕様書を作ります。</p></details><details><summary>どのクエストも同じ型になりませんか？<span aria-hidden="true">+</span></summary><p>人物の対立やプレイヤーの行動から考えます。テンプレートは見落としを防ぐためのものです。一本道に無理に分岐を加えたり、小さな案に大量の表を求めたりはしません。</p></details><details><summary>どの言語に対応していますか？<span aria-hidden="true">+</span></summary><p>サイトは中国語、英語、日本語に対応しています。Skill はユーザーの言語に合わせて回答し、プロジェクトのフィールド名、ID、API 名はそのまま扱います。</p></details></div></section>
+    <section class="final-cta"><img src="assets/quest-icon.svg" alt="" width="64" height="64"><h2>思い描いているクエストから、始めましょう。</h2><div><a class="button light" href="https://github.com/cloud-oc/GameQuestDesignerSkill">GitHub でプロジェクトを見る ↗</a><button class="button outline-light" data-copy="npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install">インストールコマンドをコピー</button></div></section>
+  </main>
+  <footer><div class="footer-brand"><img src="assets/quest-icon.svg" alt="" width="42" height="42"><p><b>Game Quest Designer Skill</b><small>クエストを、心に残る体験へ。</small></p></div><nav><a href="https://www.npmjs.com/package/game-quest-designer-skills">npm</a><a href="https://github.com/cloud-oc/GameQuestDesignerSkill">GitHub</a></nav><p class="copyright">Apache-2.0 · v0.2.1</p></footer>
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -3,182 +3,74 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Game Quest Designer Skill 使用指南：从项目契约、任务设计到实现规格、验证与跨团队交付。">
+  <meta name="description" content="为 RPG 任务设计准备的 Skill：一起打磨故事、玩家行动和任务流程，再整理成团队能用的制作文档。">
   <meta name="theme-color" content="#171a17">
   <link rel="canonical" href="https://cloud-oc.github.io/GameQuestDesignerSkill/">
+  <link rel="alternate" hreflang="zh-CN" href="https://cloud-oc.github.io/GameQuestDesignerSkill/">
+  <link rel="alternate" hreflang="en" href="https://cloud-oc.github.io/GameQuestDesignerSkill/en.html">
+  <link rel="alternate" hreflang="ja" href="https://cloud-oc.github.io/GameQuestDesignerSkill/ja.html">
+  <link rel="alternate" hreflang="x-default" href="https://cloud-oc.github.io/GameQuestDesignerSkill/">
   <link rel="icon" href="assets/quest-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="sections.css">
   <link rel="stylesheet" href="responsive.css">
   <link rel="stylesheet" href="order.css">
-  <title>Game Quest Designer Skill — 把故事意图变成可玩的任务系统</title>
+  <link rel="stylesheet" href="readability.css">
+  <title>Game Quest Designer — 把任务，设计成难忘的经历。</title>
 </head>
-<body>
+<body data-copied="已复制到剪贴板" data-copy-fallback="自动复制未成功，请复制下面的内容：">
   <a class="skip-link" href="#main">跳到正文</a>
-  <header class="site-header" data-header>
-    <a class="brand" href="#top" aria-label="返回首页">
-      <img src="assets/quest-icon.svg" alt="" width="38" height="38">
-      <span><b>Game Quest</b><small>Designer Skill</small></span>
-    </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>菜单</button>
-    <nav id="site-nav" class="site-nav" aria-label="主导航" data-nav>
-      <a href="#start">开始使用</a><a href="#skills">选择 Skill</a><a href="#workflow">设计流程</a><a href="#delivery">交付与校验</a>
-      <a class="nav-github" href="https://github.com/cloud-oc/GameQuestDesignerSkill">GitHub <span aria-hidden="true">↗</span></a>
-    </nav>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="返回首页"><img src="assets/quest-icon.svg" alt="" width="38" height="38"><span><b>Game Quest</b><small>Designer Skill</small></span></a>
+    <nav id="site-nav" class="site-nav" aria-label="主导航" data-nav><a href="#start">开始使用</a><a href="#skills">选择 Skill</a><a href="#contract">任务示例</a><a href="#faq">常见问题</a></nav>
+    <div class="header-actions">
+      <a class="github-icon" href="https://github.com/cloud-oc/GameQuestDesignerSkill" aria-label="在 GitHub 查看项目" title="在 GitHub 查看项目"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.64 1.22 3.28.93.1-.73.4-1.22.72-1.5-2.5-.29-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.29-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.15a10.8 10.8 0 0 1 5.63 0c2.15-1.46 3.1-1.15 3.1-1.15.61 1.55.23 2.69.11 2.98.72.79 1.16 1.79 1.16 3.02 0 4.32-2.64 5.27-5.15 5.55.4.35.76 1.03.76 2.08v3.11c0 .3.2.65.78.54A11.25 11.25 0 0 0 12 .75Z"/></svg></a>
+    <details class="language-switch" data-language-menu><summary aria-label="切换语言">中文<span aria-hidden="true">⌄</span></summary><nav class="language-options" aria-label="切换语言"><a href="index.html" lang="zh-CN" hreflang="zh-CN" data-language aria-current="page">中文</a><a href="en.html" lang="en" hreflang="en" data-language>English</a><a href="ja.html" lang="ja" hreflang="ja" data-language>日本語</a></nav></details>
+      <button class="nav-toggle" type="button" aria-label="菜单" aria-expanded="false" aria-controls="site-nav" data-nav-toggle><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
   </header>
-
   <main id="main">
     <section class="hero" id="top">
       <div class="hero-copy">
-        <p class="eyebrow"><span></span> Quest Design Toolkit · v0.2.1</p>
-        <h1>把故事意图，<br><em>变成可玩的任务系统。</em></h1>
-        <p class="hero-lead">一套面向广义 RPG 的任务设计 Skill。它帮助你澄清项目规则、推导玩家行动、设计状态与异常路径，并产出团队真正能制作和验证的文档。</p>
-        <div class="install-box" data-tabs>
+        <p class="eyebrow">Game Quest Designer · v0.2.1</p>
+        <h1>把任务，<br><em>设计成难忘的经历。</em></h1>
+        <p class="hero-lead">一套为 RPG 任务设计准备的 Skill。把故事、玩法、节奏与反馈连在一起，打磨玩家从初次接触到任务落幕的完整体验。</p>
+        <div class="install-box">
           <div class="tab-list" role="tablist" aria-label="安装方式">
             <button role="tab" aria-selected="true" aria-controls="npm-panel" id="npm-tab" data-tab="npm-panel">npm</button>
-            <button role="tab" aria-selected="false" aria-controls="agent-panel" id="agent-tab" data-tab="agent-panel">Agent</button>
+            <button role="tab" aria-selected="false" aria-controls="agent-panel" id="agent-tab" tabindex="-1" data-tab="agent-panel">让 Agent 安装</button>
           </div>
-          <div id="npm-panel" role="tabpanel" aria-labelledby="npm-tab" data-panel>
-            <code>npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install</code>
-            <button class="copy-button" type="button" data-copy="npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install" aria-label="复制 npm 安装命令">复制</button>
-          </div>
-          <div id="agent-panel" role="tabpanel" aria-labelledby="agent-tab" data-panel hidden>
-            <code>请安装 cloud-oc/GameQuestDesignerSkill</code>
-            <button class="copy-button" type="button" data-copy="请安装 cloud-oc/GameQuestDesignerSkill" aria-label="复制 Agent 安装提示">复制</button>
-          </div>
+          <div id="npm-panel" role="tabpanel" aria-labelledby="npm-tab" data-panel><code>npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install</code><button type="button" class="copy-button" data-copy="npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install" aria-label="复制安装命令">复制</button></div>
+          <div id="agent-panel" role="tabpanel" aria-labelledby="agent-tab" data-panel hidden><code>请安装 cloud-oc/GameQuestDesignerSkill</code><button type="button" class="copy-button" data-copy="请安装 cloud-oc/GameQuestDesignerSkill">复制</button></div>
         </div>
-        <div class="hero-actions">
-          <a class="button primary" href="#start">5 分钟开始使用 <span>↓</span></a>
-          <a class="button ghost" href="https://github.com/cloud-oc/GameQuestDesignerSkill">查看源码 <span>↗</span></a>
-        </div>
+        <div class="hero-actions"><a class="button primary" href="#start">开始设计第一条任务 ↓</a><a class="button ghost" href="https://github.com/cloud-oc/GameQuestDesignerSkill">查看源码 ↗</a></div>
       </div>
-      <div class="quest-map" aria-label="从项目契约到团队交付的六步任务设计流程">
-        <div class="map-title"><span>QUEST_PIPELINE</span><small>可按需进入，不强制走完全程</small></div>
-        <ol>
-          <li><span>01</span><div><b>项目契约</b><small>确认设计空间</small></div></li>
-          <li><span>02</span><div><b>任务简报</b><small>定义玩家承诺</small></div></li>
-          <li><span>03</span><div><b>流程架构</b><small>组织行动与反馈</small></div></li>
-          <li><span>04</span><div><b>实现规格</b><small>落成状态与规则</small></div></li>
-          <li><span>05</span><div><b>逻辑验证</b><small>覆盖异常与恢复</small></div></li>
-          <li><span>06</span><div><b>团队交付</b><small>维持全链路追溯</small></div></li>
-        </ol>
-      </div>
+      <div class="quest-map"><div class="map-title"><span>从想法到任务</span><small>从你需要的那一步开始</small></div><ol><li><span>1</span><div><b>了解项目</b><small>有哪些玩法和资源可用？</small></div></li><li><span>2</span><div><b>构思任务</b><small>玩家为什么愿意参与？</small></div></li><li><span>3</span><div><b>安排流程</b><small>玩家每一步做什么？</small></div></li><li><span>4</span><div><b>写清规则</b><small>怎样推进，怎样算完成？</small></div></li><li><span>5</span><div><b>检查逻辑</b><small>中断或读档后还能继续吗？</small></div></li><li><span>6</span><div><b>整理制作需求</b><small>团队各自需要做什么？</small></div></li></ol></div>
+    </section>
+    <section class="section quick-start" id="start">
+      <div class="section-heading"><h2>装好后，直接说你想做什么</h2><p>有完整剧本可以开始，只有一个点子也可以。先做草案，再逐步补齐。</p></div>
+      <div class="steps-grid"><article><span class="step-no">01</span><h3>安装 Skill</h3><p>在终端运行下面的命令，安装器会查找支持的 Agent 目录。</p><div class="mini-code"><code>npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install</code><button type="button" class="copy-button" data-copy="npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install" aria-label="复制安装命令">复制</button></div></article><article><span class="step-no">02</span><h3>说说你的任务</h3><p>带上背景、想让玩家体验的内容，以及已有资料。</p><blockquote>用 $game-quest-designer 设计一条港口失踪案支线。希望玩家自己找线索，场景尽量复用。资料不够的地方先写成假设。</blockquote></article><article><span class="step-no">03</span><h3>继续打磨</h3><p>想改哪部分，就直接点名对应的 Skill。</p><blockquote>用 $quest-prototype 检查这份流程：如果玩家提前拿到账本，或者调查到一半读档，任务还能继续吗？</blockquote></article></div>
+    </section>
+    <section class="section skills-section" id="skills">
+      <div class="section-heading"><h2>按眼前的问题选一个 Skill</h2><p>拿不准时，用 $game-quest-designer 描述需求，它会选用合适的方法。</p></div>
+      <div class="skill-grid"><article class="skill-card featured"><h3>总入口</h3><p>从你的问题开始，安排这次需要的设计工作。</p><code>$game-quest-designer</code></article><article class="skill-card"><h3>了解项目</h3><p>读系统说明和已有任务，整理哪些做法能用、哪些还要确认。</p><code>$quest-understand</code></article><article class="skill-card"><h3>构思任务</h3><p>想清人物的麻烦、玩家的动机，以及值得亲自参与的行动。</p><code>$quest-design</code></article><article class="skill-card"><h3>安排流程</h3><p>把故事拆成玩家能走过的步骤，写清分支与结尾。</p><code>$quest-flow</code></article><article class="skill-card"><h3>写清实现规则</h3><p>说明触发条件、任务状态和完成判定，方便程序实现。</p><code>$quest-spec</code></article><article class="skill-card"><h3>检查任务逻辑</h3><p>走一遍正常和意外情况，找出任务会卡住的地方。</p><code>$quest-prototype</code></article><article class="skill-card"><h3>整理制作需求</h3><p>列出需要的场景、角色、对白和演出，注明用途与检查方式。</p><code>$quest-requirements</code></article><article class="skill-card"><h3>准备团队交接</h3><p>整理程序、关卡、美术与界面团队各自需要的信息。</p><code>$quest-collab</code></article><article class="skill-card"><h3>评审与修改</h3><p>指出具体场景中的问题，说明影响，并给出修改建议。</p><code>$quest-review</code></article><article class="skill-card"><h3>整理任务文档</h3><p>读取、修改或同步文档，保留来源和版本差异。</p><code>$quest-docs</code></article></div>
     </section>
     <section class="section contract-section" id="contract">
-      <div class="section-heading"><p class="kicker">PROJECT CONTRACT / 04</p><h2>先写清规则，再设计任务</h2><p>项目契约不是前置审批表。它把事实、边界和未知显式化，让同一个故事题材在不同项目中产生真正不同的玩法。</p></div>
-      <div class="contract-demo">
-        <div class="contract-sheet">
-          <div class="sheet-head"><span>PROJECT_CONTRACT.md</span><small>示例 · 虚构 RPG</small></div>
-          <dl>
-            <div><dt>项目类型</dt><dd><i class="confirmed">已确认</i> 单人箱庭叙事 RPG</dd></div>
-            <div><dt>核心玩家动词</dt><dd><i class="confirmed">已确认</i> 观察、交谈、交换、潜行</dd></div>
-            <div><dt>知识状态</dt><dd><i class="confirmed">已确认</i> 线索按玩家认知独立记录</dd></div>
-            <div><dt>世界状态</dt><dd><i class="unsupported">不支持</i> 永久杀死关键 NPC</dd></div>
-            <div><dt>存档恢复</dt><dd><i class="unknown">未知</i> 跨地图护送对象如何恢复</dd></div>
-            <div><dt>制作预算</dt><dd><i class="proposal">临时建议</i> 复用港口夜景与 3 名常驻 NPC</dd></div>
-          </dl>
-        </div>
-        <div class="contract-result">
-          <p class="result-label">这份契约如何改变设计</p>
-          <h3>“失踪案”不会被做成一条标记点路线。</h3>
-          <ul>
-            <li><span>01</span><p><b>调查依赖玩家认知</b>线索改变可提问项，而不是只推进隐藏计数器。</p></li>
-            <li><span>02</span><p><b>冲突用交换或潜行解决</b>关键 NPC 不可永久死亡，因此不把击杀做成硬门槛。</p></li>
-            <li><span>03</span><p><b>先规避未证实的护送恢复</b>低成本版本改为“约定会合”，待技术规则确认后再升级。</p></li>
-          </ul>
-        </div>
-      </div>
+      <div class="section-heading"><h2>比如，一条港口失踪案支线</h2><p>同一个故事，项目能提供的玩法不同，任务的做法也会不同。先用几条规则把范围说清楚。</p></div>
+      <div class="contract-demo"><div class="contract-sheet"><h3>这个虚构项目的已知条件</h3><dl><div><dt>可用玩法</dt><dd>观察、交谈、交换、潜行</dd></div><div><dt>线索记录</dt><dd>分别记录玩家发现的线索</dd></div><div><dt>角色限制</dt><dd>关键 NPC 不能永久死亡</dd></div><div><dt>尚待确认</dt><dd>跨地图护送如何恢复存档</dd></div><div><dt>草案预算</dt><dd>复用港口夜景与 3 名常驻 NPC</dd></div></dl></div>
+      <div class="contract-result"><h3>让玩家查出真相，而不只是追着标记走。</h3><ul><li><span>01</span><p><b>发现矛盾</b>货单写着运往北岸，船工却说船往南走。新线索让玩家能继续追问。</p></li><li><span>02</span><p><b>决定怎么调查</b>用交换或潜行拿到账本。两条路线在仓库汇合，减少额外场景。</p></li><li><span>03</span><p><b>留下后果</b>玩家决定是否保护船工。即使回到同一条主线，角色的后续回应也要不同。</p></li></ul><p class="example-note">护送的存档规则还不清楚，草案先用“约定会合”。以上是设计示例，不代表你的项目已经支持这些功能。</p></div></div>
     </section>
-
     <section class="section delivery-section" id="delivery">
-      <div class="section-heading split-heading"><div><p class="kicker">DELIVERABLES / 05</p><h2>五套可审阅的 Markdown 交付物</h2></div><p>模板共享稳定 ID，但不会冒充引擎配置。只生成当前请求需要的文档，未知项继续保留为未知。</p></div>
-      <div class="deliverable-grid">
-        <article><span>QBR</span><h3>任务简报</h3><p>核心体验、玩家承诺、因果链、范围与关键取舍。</p><code>QST- · DEC-</code></article>
-        <article><span>QFL</span><h3>流程架构</h3><p>节拍、玩家信息、行动、反馈、状态和分支。</p><code>QST- · BEAT-</code></article>
-        <article><span>QSP</span><h3>实现规格</h3><p>状态转换、条件、计数、动作、副作用和恢复。</p><code>RULE- · STATE-</code></article>
-        <article><span>QPR</span><h3>制作需求</h3><p>资源依据、供给状态、来源、验收和复用关系。</p><code>REQ- · BEAT-</code></article>
-        <article><span>QRR</span><h3>评审报告</h3><p>问题证据、触发场景、影响、最小修订与验证。</p><code>ISSUE- · TEST-</code></article>
-      </div>
-
-      <div class="validator-block">
-        <div class="validator-copy"><p class="kicker">OPTIONAL VALIDATOR</p><h3>用中立清单检查追溯，不猜引擎语义</h3><p><code>quest-package.json</code> 只描述任务、节拍、需求与测试之间的引用。校验器检查 ID、可达性、终态和追溯完整性；没有清单时，所有 Skill 仍可正常输出 Markdown。</p><ul><li>发现悬空引用与重复 ID</li><li>发现不可达节拍与无意的无出口节点</li><li>检查需求、测试与来源是否互相可追溯</li></ul></div>
-        <div class="terminal" aria-label="校验命令示例"><div><i></i><i></i><i></i><span>quest-package-validate</span></div><pre><span class="prompt">$</span> npx --yes --package=game-quest-designer-skills@latest \
-  -- quest-package-validate ./quest-package.json
-
-<span class="ok">✓</span> IDs are unique
-<span class="ok">✓</span> References resolve
-<span class="ok">✓</span> Entry and terminal states exist
-<span class="ok">✓</span> Traceability is complete
-
-<b>Validation passed.</b></pre></div>
-      </div>
+      <div class="section-heading"><h2>写成团队拿得到、看得懂的文档</h2><p>只整理当前需要的部分。先讲清玩法，再补充编号、条件与制作细节。</p></div>
+      <div class="deliverable-grid"><article><h3>任务简报</h3><p>故事是什么，玩家为什么参与，结束时改变什么。</p></article><article><h3>任务流程</h3><p>每一步的目标、行动、反馈，以及分支怎么汇合。</p></article><article><h3>实现规格</h3><p>怎样触发和完成，失败或读档后怎样继续。</p></article><article><h3>制作需求</h3><p>需要哪些资源，能复用哪些内容，怎样验收。</p></article><article><h3>评审记录</h3><p>哪里有问题，什么情况下出现，如何修改和复查。</p></article></div>
+      <div class="validator-block"><div class="validator-copy"><h3>文档多了，也能检查有没有漏项</h3><p>可选的 quest-package.json 把任务、步骤、需求和测试关联起来。校验器能找到重复编号、失效引用和走不到的节点；它不替代引擎测试，也不是引擎配置。</p></div><div class="terminal" aria-label="校验命令示例"><div><span>quest-package-validate</span></div><pre>npx --yes --package=game-quest-designer-skills@latest \
+  -- quest-package-validate ./quest-package.json</pre></div></div>
     </section>
-
-    <section class="section faq-section" id="faq">
-      <div class="section-heading"><p class="kicker">FAQ / 06</p><h2>使用边界</h2></div>
-      <div class="faq-list">
-        <details><summary>我必须从项目契约开始吗？<span>+</span></summary><p>不必。明确的小任务可以直接调用专项 Skill。项目契约更适合新项目、规则复杂或多人协作场景；未知信息不会阻塞概念设计。</p></details>
-        <details><summary>它会直接生成 Unity、Unreal 或自研引擎配置吗？<span>+</span></summary><p>只有在你提供真实 schema、工具能力和项目约定时才会准备对应实现内容。缺少依据时，它只输出审阅级规格，不伪造“可导入”配置。</p></details>
-        <details><summary>任务模式库会不会让设计变成套模板？<span>+</span></summary><p>不会。调查、潜入、护送等模式只用于检查必要能力、成本、失败和恢复问题；设计始终从项目约束、玩家承诺和可操作动词出发。</p></details>
-        <details><summary>评审会给任务打一个总分吗？<span>+</span></summary><p>不会。八维质量标尺记录观察问题、证据、风险信号与验证方法，避免用伪精确分数掩盖具体判断，也避免把风格偏好误判为缺陷。</p></details>
-      </div>
-    </section>
-
-    <section class="final-cta">
-      <img src="assets/quest-icon.svg" alt="" width="72" height="72"><p class="kicker">READY TO DESIGN</p><h2>从下一条任务开始，<br>让每个节点都有意义。</h2><div><a class="button light" href="https://github.com/cloud-oc/GameQuestDesignerSkill">在 GitHub 查看项目 <span>↗</span></a><button class="button outline-light" data-copy="npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install">复制安装命令</button></div>
-    </section>
-
-    <section class="principles" aria-label="设计原则">
-      <p><span>01</span>不假定引擎能力</p><p><span>02</span>不把未知写成事实</p><p><span>03</span>不强迫完整流水线</p><p><span>04</span>不伪造可导入配置</p>
-    </section>
-
-    <section class="section quick-start" id="start">
-      <div class="section-heading">
-        <p class="kicker">START HERE / 01</p><h2>三步进入任务设计</h2>
-        <p>你可以只调用一个专项 Skill，也可以让总入口根据当前问题自动路由。</p>
-      </div>
-      <div class="steps-grid">
-        <article><span class="step-no">01</span><h3>安装</h3><p>用 npm 安装到支持 Skill 的 Agent 环境，安装器会自动发现目标目录。</p><div class="mini-code"><code>npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install</code><button data-copy="npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install" aria-label="复制命令">复制</button></div></article>
-        <article><span class="step-no">02</span><h3>描述任务</h3><p>告诉 Agent 你的项目背景、玩家体验目标与当前产物。不完整的信息也能开始。</p><blockquote>“用 $game-quest-designer 为港口失踪案做一版完整任务草案，未知处集中列出假设。”</blockquote></article>
-        <article><span class="step-no">03</span><h3>按需细化</h3><p>从设计、结构、实现、测试到交付，直接点名专项 Skill 继续工作。</p><blockquote>“用 $quest-prototype 检查这份流程的状态闭环和断点恢复。”</blockquote></article>
-      </div>
-    </section>
-
-    <section class="section skills-section" id="skills">
-      <div class="section-heading split-heading"><div><p class="kicker">SKILL ROUTER / 02</p><h2>一个入口，九种专业视角</h2></div><p>不知道该选哪个时，使用 <code>$game-quest-designer</code>。目标明确时，直接调用专项 Skill，减少无关产物。</p></div>
-      <div class="skill-grid">
-        <article class="skill-card featured"><span class="skill-index">00 / ROUTER</span><h3>$game-quest-designer</h3><p>理解请求、选择工作模式、协调专项能力。适合从模糊问题开始，或处理跨阶段任务。</p><b>总入口</b></article>
-        <article class="skill-card"><span>01</span><h3>$quest-understand</h3><p>建立项目契约，区分已确认、不支持、未知与临时建议。</p><b>项目理解</b></article>
-        <article class="skill-card"><span>02</span><h3>$quest-design</h3><p>从矛盾和玩家承诺推导动词、信息、反馈与状态变化。</p><b>概念设计</b></article>
-        <article class="skill-card"><span>03</span><h3>$quest-flow</h3><p>组织剧情到玩法的映射、节拍、分支、回流与节奏。</p><b>流程结构</b></article>
-        <article class="skill-card"><span>04</span><h3>$quest-spec</h3><p>定义条件、目标、状态、动作、副作用与实现规格。</p><b>系统规格</b></article>
-        <article class="skill-card"><span>05</span><h3>$quest-prototype</h3><p>构建逻辑原型，验证异常路径、重入点和恢复规则。</p><b>逻辑原型</b></article>
-        <article class="skill-card"><span>06</span><h3>$quest-requirements</h3><p>整理资源依据、制作需求、供给状态、验收与复用关系。</p><b>制作需求</b></article>
-        <article class="skill-card"><span>07</span><h3>$quest-collab</h3><p>准备程序、关卡、演出与界面团队之间的交接信息。</p><b>团队协作</b></article>
-        <article class="skill-card"><span>08</span><h3>$quest-review</h3><p>用八维质量标尺和反模式库进行有证据、无伪评分的评审。</p><b>质量评审</b></article>
-        <article class="skill-card"><span>09</span><h3>$quest-docs</h3><p>读取、整理与同步任务文档，维护事实边界和版本差异。</p><b>文档同步</b></article>
-      </div>
-    </section>
-
-    <section class="section workflow-section" id="workflow">
-      <div class="section-heading split-heading"><div><p class="kicker">WORKFLOW / 03</p><h2>从“为什么玩”到“如何验收”</h2></div><p>这是一条推荐路径，不是审批关卡。你可以从任意阶段进入，也可以只取当前真正需要的产物。</p></div>
-      <div class="workflow-list">
-        <article><span>01</span><div><small>CONTRACT</small><h3>锁定项目设计空间</h3><p>梳理玩家动词、任务层级、知识状态、世界共享对象、存档恢复、表现层职责与制作预算。</p></div><code>$quest-understand</code></article>
-        <article><span>02</span><div><small>PROMISE</small><h3>定义玩家承诺</h3><p>把角色或世界矛盾转译为玩家要做的事、能理解的信息，以及行动带来的可观察变化。</p></div><code>$quest-design</code></article>
-        <article><span>03</span><div><small>BEATS</small><h3>组织节拍与分支</h3><p>让信息、行动、反馈和状态彼此咬合；控制分支成本，而不是制造组合爆炸。</p></div><code>$quest-flow</code></article>
-        <article><span>04</span><div><small>STATE</small><h3>定义可恢复的逻辑</h3><p>描述条件、计数、副作用、重入点、失败方式和恢复规则，让设计能够被可靠实现。</p></div><code>$quest-spec · $quest-prototype</code></article>
-        <article><span>05</span><div><small>PROOF</small><h3>用场景验证判断</h3><p>通过主路径、边界、异常和回归场景找出断链，不用总分掩盖具体风险。</p></div><code>$quest-prototype · $quest-review</code></article>
-        <article><span>06</span><div><small>HANDOFF</small><h3>保持跨团队追溯</h3><p>统一任务、节拍、需求和测试 ID，让每项资源都能回答“为什么需要、如何验收”。</p></div><code>$quest-requirements · $quest-collab</code></article>
-      </div>
-    </section>
+    <section class="section faq-section" id="faq"><div class="section-heading"><h2>开始之前，你可能想问</h2></div><div class="faq-list"><details><summary>必须先整理全部项目规则吗？<span aria-hidden="true">+</span></summary><p>不用。小任务可以直接开始，资料不足的部分先写成假设。新项目或多人协作时，再把影响设计的规则整理下来。</p></details><details><summary>能直接生成引擎配置吗？<span aria-hidden="true">+</span></summary><p>需要你提供真实配置格式、项目约定和可用工具。没有这些资料时，先输出供团队讨论和实现的规格文档。</p></details><details><summary>会把每条任务都写成同一个模板吗？<span aria-hidden="true">+</span></summary><p>任务从人物矛盾和玩家行动开始设计。模板用来检查有没有遗漏；线性任务不必硬加分支，小创意也不需要填完整表格。</p></details><details><summary>支持哪些语言？<span aria-hidden="true">+</span></summary><p>网站提供中文、英文和日文。Skill 默认跟随你的交流语言；项目字段名、ID 和 API 名称保持原样。</p></details></div></section>
+    <section class="final-cta"><img src="assets/quest-icon.svg" alt="" width="64" height="64"><h2>把你脑中的那条任务，拿出来聊聊。</h2><div><a class="button light" href="https://github.com/cloud-oc/GameQuestDesignerSkill">在 GitHub 查看项目 ↗</a><button class="button outline-light" data-copy="npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install">复制安装命令</button></div></section>
   </main>
-
-  <footer>
-    <div class="footer-brand"><img src="assets/quest-icon.svg" alt="" width="42" height="42"><p><b>Game Quest Designer Skill</b><small>Professional quest design, from intent to delivery.</small></p></div>
-    <nav aria-label="页脚导航"><a href="https://www.npmjs.com/package/game-quest-designer-skills">npm</a><a href="https://github.com/cloud-oc/GameQuestDesignerSkill">GitHub</a><a href="https://github.com/cloud-oc/GameQuestDesignerSkill/blob/main/README.en.md">English</a><a href="https://github.com/cloud-oc/GameQuestDesignerSkill/blob/main/README.ja.md">日本語</a></nav>
-    <p class="copyright">Apache-2.0 · v0.2.1</p>
-  </footer>
-  <div class="toast" role="status" aria-live="polite" data-toast>已复制到剪贴板</div>
+  <footer><div class="footer-brand"><img src="assets/quest-icon.svg" alt="" width="42" height="42"><p><b>Game Quest Designer Skill</b><small>把任务，设计成难忘的经历。</small></p></div><nav><a href="https://www.npmjs.com/package/game-quest-designer-skills">npm</a><a href="https://github.com/cloud-oc/GameQuestDesignerSkill">GitHub</a></nav><p class="copyright">Apache-2.0 · v0.2.1</p></footer>
+  <div class="toast" role="status" aria-live="polite" data-toast></div>
   <script src="app.js" defer></script>
 </body>
 </html>
