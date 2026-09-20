@@ -5,19 +5,26 @@
 
 [![npm](https://img.shields.io/npm/v/game-quest-designer-skills?style=flat-square&color=D74632)](https://www.npmjs.com/package/game-quest-designer-skills) [![中文](https://img.shields.io/badge/语言-中文-20231F?style=flat-square)](README.md) [![English](https://img.shields.io/badge/Language-English-20231F?style=flat-square)](README.en.md) [![日本語](https://img.shields.io/badge/言語-日本語-D74632?style=flat-square)](README.ja.md)
 
-RPG のクエスト設計全体を支援する、プロジェクトに適応可能な Skill 集です。クエストシステムの仕様書、エディターの説明、シナリオ、世界設定からプロジェクトのルールを把握し、クエスト分析、要件定義、フロー設計、実装仕様、ロジックプロトタイプ、品質レビュー、オリジナルクエストの制作、制作要件の整理、チーム間の引き継ぎに対応します。
+**クエストを、心に残る体験へ。**
 
-「章―幕―クエストグループ―クエスト―目標」、Quest/Target モデル、宣言的なクエスト設計などを理解できますが、プロジェクト資料で採用が確認できた場合にのみ適用します。特定チームの内部工程を、すべての RPG に共通する標準とは扱いません。資料がなくてもコンセプト案を作成できますが、未確認のシステム機能を明示します。非公開のプロジェクト資料はプロジェクト内に保存し、汎用 Skill パッケージには含めません。
+RPG のクエスト設計を支える Skill 集です。物語、遊び、テンポ、行動への反応をつなぎ、最初の出会いから結末までを一つの体験として磨き上げ、チームが制作に使える資料にまとめます。
 
-## 0.2.0 専門化機能
+仕様書があっても、アイデアだけでも始められます。提供された資料をもとに考え、不足する情報は仮定として示します。非公開の資料はユーザーのプロジェクト内に保存します。
 
-- `$quest-understand` に、プレイヤー動詞、ライフサイクル、知識状態、選択の結果、共有世界、復旧、制作境界を整理するコピー可能なプロジェクト契約を追加しました。
-- `$quest-design` に 10 種類の RPG クエストパターンと、対立・プレイヤーへの約束から低コスト版まで導く方法を追加しました。パターンは参照用で、テンプレート的な置き換えには使いません。
-- `$quest-review` に 8 観点の観察可能な品質基準と 10 種類のアンチパターンを追加しました。共通点数は計算せず、直線的・低速・非戦闘のクエストを自動的に欠陥とは判定しません。
-- クエスト概要、フロー、実装仕様、制作要件、レビュー報告には任意の Markdown テンプレートがあります。要求された成果物だけを使用します。
-- 文書間の追跡を機械検証する場合は、中立な `quest-package.json` を `quest-package-validate <path>` で検証できます。ID、参照、到達可能性、追跡関係だけを確認し、エンジン設定としては扱いません。
+## できること
 
-この版には大型インタラクティブ HTML と自動知識蓄積は含みません。プロジェクト資料は、許可された場合にのみユーザーのプロジェクトへ保存します。
+- **プロジェクトを知る**：`$quest-understand` で使える仕組み、クエストのルール、確認が必要な点を整理します。
+- **クエストを考える**：`$quest-design` で人物の対立、プレイヤーの行動と結果を考え、制作規模を抑えた案も比較します。
+- **レビューして直す**：`$quest-review` で具体的な場面の問題と修正案を示します。一本道、ゆっくりした展開、戦闘がないこと自体は欠点ではありません。
+- **資料をまとめる**：概要、フロー、実装仕様、制作要件、レビュー記録から必要なものだけを作ります。
+- **参照を確認する**：任意の `quest-package.json` でクエスト、手順、要件、テストを関連づけ、`quest-package-validate <path>` で ID の重複、参照切れ、到達できないノードを確認できます。エンジン設定ではありません。
+
+## 0.2.2 の変更点
+
+- 10 個の Skill の説明を読みやすくしました。まずプレイヤーの状況、行動、体験を説明し、その後に実装ルールを示します。
+- 書き方の例を追加し、クエスト概要テンプレートを改訂しました。専門用語の羅列や不要な表を減らします。
+- 中国語、英語、日本語の紹介文を更新しました。サイトには言語のドロップダウンを追加し、モバイル表示と FAQ の改行を調整しました。
+- 既存の Skill は下記の `update` コマンドで更新できます。インストールコマンドと検証ツールのインターフェースは引き続き使えます。
 
 ## インストール
 
@@ -97,7 +104,7 @@ $game-quest-designer を使って、提供したクエストシステムの説�
 
 - push または pull request ごとに Node.js 20/24 で検証し、npm `.tgz` を自動生成して GitHub Actions の成果物として 14 日間保存します。
 - ローカルの `npm run build` は `prepack` で全テストを実行してから tarball を作成します。`npm publish` にも同じゲートが適用されます。
-- `package.json` のバージョンと一致する `v*` タグを push すると、npm Trusted Publishing で自動公開します。例：`npm version patch` の後、`git push origin main --follow-tags` を実行します。
+- `package.json` のバージョンと一致する `v*` タグを push すると、npm Trusted Publishing で自動公開します。`npm version patch --no-git-tag-version` でバージョンを上げ、`npm run build:site` と `npm test` を実行します。生成ページをコミットし、同じバージョンのタグを作成して push してください。
 
 初回の自動公開前に、npm の `game-quest-designer-skills` 設定で GitHub Actions の Trusted Publisher を追加してください。所有者は `cloud-oc`、リポジトリは `GameQuestDesignerSkill`、ワークフローファイル名は `publish.yml` とし、直接の `npm publish` を許可します。これは一度だけ必要なアカウント設定です。未設定でもビルドは成功しますが、タグからの公開は認証に失敗します。OIDC を使用するため、長期 `NPM_TOKEN` は不要です。
 
@@ -119,3 +126,11 @@ assets/   リポジトリ共通のブランド素材
 総合入口は [SKILL.md](skills/game-quest-designer/SKILL.md) です。専門手法は `skills/*/SKILL.md` で管理します。総合入口の `references/` は、総合 Skill だけをインストールした場合の基本手法として残しています。振る舞いの回帰シナリオは [evals/scenarios.md](evals/scenarios.md) を参照してください。skill-creator 付属の `quick_validate.py` で `skills/` 配下の 10 ディレクトリを個別に確認できます。構造検証だけでは、モデルの振る舞いやゲーム実行時の正しさは保証できません。
 
 ライセンスは [Apache-2.0](LICENSE) です。
+
+## サイトと文案の更新
+
+サイトは[中国語](https://cloud-oc.github.io/GameQuestDesignerSkill/)、[英語](https://cloud-oc.github.io/GameQuestDesignerSkill/en.html)、[日本語](https://cloud-oc.github.io/GameQuestDesignerSkill/ja.html)に対応しています。言語を切り替えても現在のセクションを保ち、各言語の URL を共有できます。
+
+`site/locales/` の文案を編集した後、`npm run build:site` と `npm test` を実行します。生成した HTML も一緒にコミットしてください。3 言語でレイアウトを共有し、本文は静的なページとして読めます。
+
+Skill の書き方は[設計文の例（中国語）](skills/game-quest-designer/references/writing-style.md)を参照してください。

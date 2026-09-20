@@ -66,7 +66,7 @@ test('professionalization assets and references are shipped by the package', asy
   ];
   for (const relative of required) await fs.access(path.join(skillsRoot, relative));
   const pkg = JSON.parse(await fs.readFile(path.join(root, 'package.json'), 'utf8'));
-  assert.equal(pkg.version, '0.2.1');
+  assert.match(pkg.version, /^\d+\.\d+\.\d+$/);
   assert.equal(pkg.bin['quest-package-validate'], 'bin/validate-quest-package.mjs');
   assert.ok(pkg.files.includes('skills/'), 'skills directory is distributed');
 });

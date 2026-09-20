@@ -7,7 +7,7 @@
 
 **把任务，设计成难忘的经历。**
 
-一套帮助你设计 RPG 任务的 Skill。把故事想法变成玩家能参与的任务：为什么接下委托、每一步做什么、选择会改变什么，再整理成团队能用的流程和制作文档。
+一套帮助你设计 RPG 任务的 Skill。把故事、玩法、节奏与反馈连在一起，打磨从初次接触到任务落幕的完整体验，再整理成团队能用的流程和制作文档。
 
 有项目资料时，先读懂已有规则；只有一个点子时，也可以从标明假设的草案开始。不同项目的引擎能力和资源各有不同，Skill 会以你提供的资料为准。项目私有资料只保存在你的项目中。
 
@@ -18,6 +18,13 @@
 - **检查与修改**：用 `$quest-review` 找出具体场景中的问题，解释原因并给出修改建议。线性、慢节奏或没有战斗本身不算缺陷。
 - **准备文档**：按需生成任务简报、流程、实现规格、制作需求或评审记录，不必每次填写全套模板。
 - **核对文档引用**：可选的 `quest-package.json` 把任务、步骤、需求和测试关联起来。用 `quest-package-validate <path>` 检查重复编号、失效引用和不可达节点。它不是引擎配置。
+
+## 0.2.2 更新
+
+- 十个 Skill 入口统一采用更自然的表达：先讲玩家遇到什么、要做什么、体验怎样变化，再补实现规则。
+- 新增设计表达示例，改写任务简报模板，减少术语堆叠和不必要的表格。
+- 中文、英文、日文介绍同步更新；网站支持语言下拉切换，并改善手机端与问答排版。
+- 已安装旧版时，运行下方的 `update` 命令即可获取新版 Skill。安装命令和配置校验接口保持兼容。
 
 ## 安装
 
@@ -96,7 +103,7 @@ Skill 会按需要读取参考文件。你提供的项目模板优先；没有�
 
 - 任意 push 或 pull request 会运行 Node.js 20/24 验证，随后自动生成 npm `.tgz`，作为 GitHub Actions 构建产物保留 14 天。
 - 本地运行 `npm run build` 也会先经 `prepack` 自动执行全部测试，再生成 tarball；`npm publish` 同样不能绕过该门禁。
-- 推送与 `package.json` 版本一致的 `v*` 标签时，`publish.yml` 会通过 npm Trusted Publishing 自动发布。例如先运行 `npm version patch`，再运行 `git push origin main --follow-tags`。
+- 推送与 `package.json` 版本一致的 `v*` 标签时，`publish.yml` 会通过 npm Trusted Publishing 自动发布。先用 `npm version patch --no-git-tag-version` 更新版本，再运行 `npm run build:site` 和 `npm test`；提交生成页面后创建同版本标签并推送。
 
 首次自动发布前，需要在 npm 包 `game-quest-designer-skills` 的 Settings → Trusted Publisher 中添加 GitHub Actions：组织/用户填 `cloud-oc`，仓库填 `GameQuestDesignerSkill`，工作流文件填 `publish.yml`，并允许直接执行 `npm publish`。该账户级设置只需一次；未配置时构建仍会成功，但标签发布会因无法认证而失败。发布工作流使用 OIDC，不需要在 GitHub 保存长期 `NPM_TOKEN`。
 

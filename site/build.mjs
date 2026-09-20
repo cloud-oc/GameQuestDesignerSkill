@@ -1,10 +1,11 @@
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import zh from './locales/zh-CN.mjs';
 import en from './locales/en.mjs';
 import ja from './locales/ja.mjs';
 
 export const locales = [zh, en, ja];
+const { version } = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
 const repo = 'https://github.com/cloud-oc/GameQuestDesignerSkill';
 const base = 'https://cloud-oc.github.io/GameQuestDesignerSkill/';
 const install = 'npx --yes --package=game-quest-designer-skills@latest -- game-quest-designer-skills install';
@@ -43,7 +44,7 @@ export function render(t) {
   <main id="main">
     <section class="hero" id="top">
       <div class="hero-copy">
-        <p class="eyebrow">Game Quest Designer · v0.2.1</p>
+        <p class="eyebrow">Game Quest Designer · v${version}</p>
         <h1>${e(t.hero[0])}<br><em>${e(t.hero[1])}</em></h1>
         <p class="hero-lead">${e(t.lead)}</p>
         <div class="install-box">
@@ -79,7 +80,7 @@ export function render(t) {
     <section class="section faq-section" id="faq"><div class="section-heading"><h2>${e(t.faqTitle)}</h2></div><div class="faq-list">${t.faq.map(([question, answer]) => `<details><summary>${e(question)}<span aria-hidden="true">+</span></summary><p>${e(answer)}</p></details>`).join('')}</div></section>
     <section class="final-cta"><img src="assets/quest-icon.svg" alt="" width="64" height="64"><h2>${e(t.cta)}</h2><div><a class="button light" href="${repo}">${e(t.github)} ↗</a><button class="button outline-light" data-copy="${e(install)}">${e(t.copyCommand)}</button></div></section>
   </main>
-  <footer><div class="footer-brand"><img src="assets/quest-icon.svg" alt="" width="42" height="42"><p><b>Game Quest Designer Skill</b><small>${e(t.footer)}</small></p></div><nav><a href="https://www.npmjs.com/package/game-quest-designer-skills">npm</a><a href="${repo}">GitHub</a></nav><p class="copyright">Apache-2.0 · v0.2.1</p></footer>
+  <footer><div class="footer-brand"><img src="assets/quest-icon.svg" alt="" width="42" height="42"><p><b>Game Quest Designer Skill</b><small>${e(t.footer)}</small></p></div><nav><a href="https://www.npmjs.com/package/game-quest-designer-skills">npm</a><a href="${repo}">GitHub</a></nav><p class="copyright">Apache-2.0 · v${version}</p></footer>
   <div class="toast" role="status" aria-live="polite" data-toast></div>
   <script src="app.js" defer></script>
 </body>

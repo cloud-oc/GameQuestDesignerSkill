@@ -1,7 +1,7 @@
 {
   "name": "game-quest-designer-skills",
-  "version": "0.2.1",
-  "description": "Install and update RPG quest design skills for Codex",
+  "version": "0.2.2",
+  "description": "RPG quest design skills for shaping stories, gameplay, pacing and production-ready documents",
   "license": "Apache-2.0",
   "type": "module",
   "bin": {
@@ -25,6 +25,10 @@
   },
   "files": [
     "bin/",
-    "skills/"
-  ]
+    "skills/",
+    "README.en.md",
+    "README.ja.md",
+    "assets/quest-icon-v2.svg"
+  ],
+  "homepage": "https://cloud-oc.github.io/GameQuestDesignerSkill/"
 }

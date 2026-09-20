@@ -5,19 +5,26 @@
 
 [![npm](https://img.shields.io/npm/v/game-quest-designer-skills?style=flat-square&color=D74632)](https://www.npmjs.com/package/game-quest-designer-skills) [![中文](https://img.shields.io/badge/语言-中文-20231F?style=flat-square)](README.md) [![English](https://img.shields.io/badge/Language-English-D74632?style=flat-square)](README.en.md) [![日本語](https://img.shields.io/badge/言語-日本語-20231F?style=flat-square)](README.ja.md)
 
-An adaptive skill collection for the full RPG quest design workflow. It learns project rules from your quest system documentation, editor guides, scripts, and worldbuilding materials, then supports quest analysis, definition, flow architecture, implementation specifications, logic prototypes, quality reviews, original quest creation, production requirements, and cross-team handoffs.
+**Design quests. Create lasting experiences.**
 
-The skills recognize structures such as chapter–act–quest group–quest–objective, Quest/Target models, and declarative quest systems, but apply them only when your project materials confirm their use. One team's internal workflow is not treated as a universal RPG standard. Concept drafts are possible without project documentation, with unconfirmed capabilities clearly identified. Private project materials stay in your project, outside the reusable skill package.
+A set of Skills for RPG quest design. Bring story, gameplay, pacing and feedback together to shape the whole experience, then prepare flows and documents your team can build from.
 
-## 0.2.0 professionalization
+Start with project documentation or just an idea. The Skills follow the rules you provide and mark assumptions when details are missing. Private project material stays in your project.
 
-- `$quest-understand` includes a copyable quest project contract for player verbs, lifecycle, knowledge state, consequences, shared-world rules, recovery, and production boundaries.
-- `$quest-design` includes ten RPG quest patterns and a derivation method from conflict and player promise to a lower-cost version. Patterns are references, not reskin formulas.
-- `$quest-review` includes an eight-dimension observable quality rubric and ten anti-patterns. It does not compute a universal score or reject linear, slow, or non-combat quests by default.
-- Quest brief, flow, implementation spec, production requirements, and review report each have an optional Markdown template. Skills use only the requested artifacts.
-- For machine-checkable cross-document traceability, an optional neutral `quest-package.json` can be validated with `quest-package-validate <path>`. It checks IDs, references, reachability, and traceability; it is not engine configuration.
+## What you can do
 
-This release does not add a large interactive HTML renderer or automatic knowledge capture. Project material is written only to the user's project with authorization.
+- **Understand your project** with `$quest-understand`: find the available mechanics, quest rules and questions to resolve.
+- **Develop a quest** with `$quest-design`: work through character conflicts, player actions and consequences, with options for smaller production budgets.
+- **Review and revise** with `$quest-review`: identify problems in specific situations and get practical changes. Linear, slow or non-combat quests are valid choices.
+- **Prepare documents**: create a brief, flow, implementation spec, asset requirements or review notes as needed. You do not need every template for every task.
+- **Check references**: optionally link quests, steps, requirements and tests in `quest-package.json`. Run `quest-package-validate <path>` to find duplicate IDs, broken references and unreachable nodes. This is not engine configuration.
+
+## What's new in 0.2.2
+
+- All ten Skill entry points use clearer language: explain the player's situation, actions and experience before implementation rules.
+- New writing examples and a revised quest brief template reduce jargon and unnecessary tables.
+- Chinese, English and Japanese introductions are aligned. The website adds a language dropdown and improves mobile and FAQ layouts.
+- Run the `update` command below to refresh an existing installation. Installer commands and the validator interface remain compatible.
 
 ## Installation
 
@@ -97,7 +104,7 @@ The installer and quest-package validator use only the Node.js standard library 
 
 - Every push and pull request validates on Node.js 20 and 24, then builds an npm `.tgz` artifact retained by GitHub Actions for 14 days.
 - `npm run build` runs the complete test suite through `prepack` before creating a tarball. The same gate applies to `npm publish`.
-- Pushing a `v*` tag that matches `package.json` publishes through npm Trusted Publishing. For example, run `npm version patch`, then `git push origin main --follow-tags`.
+- Pushing a `v*` tag that matches `package.json` publishes through npm Trusted Publishing. Update the version with `npm version patch --no-git-tag-version`, run `npm run build:site` and `npm test`, then commit the generated pages, create a matching version tag and push.
 
 Before the first automated release, add a GitHub Actions Trusted Publisher in the npm settings for `game-quest-designer-skills`: owner `cloud-oc`, repository `GameQuestDesignerSkill`, workflow filename `publish.yml`, with direct `npm publish` allowed. This is a one-time account setting. Builds still work without it, but tagged publishing will fail authentication. The workflow uses OIDC and does not require a long-lived `NPM_TOKEN` secret.
 
@@ -119,3 +126,11 @@ assets/   Repository-level brand assets
 The main entry point is [SKILL.md](skills/game-quest-designer/SKILL.md). Specialized methods live in `skills/*/SKILL.md`. The main skill's `references/` directory provides baseline methods when only that skill is installed. See [evals/scenarios.md](evals/scenarios.md) for behavioral regression scenarios. Use skill-creator's `quick_validate.py` to check each of the ten directories under `skills/`; structural checks do not establish model behavior or game runtime correctness.
 
 Licensed under [Apache-2.0](LICENSE).
+
+## Website and copy
+
+Browse the [Chinese](https://cloud-oc.github.io/GameQuestDesignerSkill/), [English](https://cloud-oc.github.io/GameQuestDesignerSkill/en.html) or [Japanese](https://cloud-oc.github.io/GameQuestDesignerSkill/ja.html) website. The language dropdown keeps your current section; each language has a shareable URL.
+
+Edit translations in `site/locales/`, run `npm run build:site`, then `npm test`. Commit the generated HTML with the source changes. The three pages share a layout and work as static documents.
+
+For Skill writing guidance, see [design writing examples (Chinese)](skills/game-quest-designer/references/writing-style.md).
